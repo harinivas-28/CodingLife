@@ -113,9 +113,7 @@ public class Day2P2_PQ_SW{
         int l = 0, r = 0;
         while (r < n) {
             map.put(arr[r], map.getOrDefault(arr[r], 0) + 1);
-            PriorityQueue<int[]> pq = new PriorityQueue<>((a,b)->{
-                    return b[1]==a[1] ? b[0]-a[0] : b[1]-a[1];
-            });
+            PriorityQueue<int[]> pq = new PriorityQueue<>((a,b)-> b[1]==a[1] ? b[0]-a[0] : b[1]-a[1]);
 
             if (r >= k - 1) {
                 for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
