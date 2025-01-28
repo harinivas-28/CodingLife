@@ -1,55 +1,145 @@
-import java.util.*;
+/*
+You are a treasure hunter exploring an ancient vault filled with
+treasure boxes. The vault is represented as an array treasures of
+n integers, where each integer corresponds to the value of a treasure.
+You have a special key that allows you to scan and select treasures
+from a sub-vault (a segment of the array) of size k. Additionally,
+you have a magical power factor f and a priority filter x.
 
-public class Day2P2_PQ_SW {
-    public static void main(String[] args){
+The priority-weighted treasure sum of a sub-vault is calculated as follows:
+	1. Count the occurrences of each treasure value in the sub-vault.
+	2. Assign a priority score to each treasure based on its frequency
+	multiplied by the treasure's value raised to the power of f
+	(i.e., priority_score[treasure] = frequency[treasure] * (value^f)).
+	3. Select only the top x treasures based on their priority scores.
+	If two treasures have the same priority score, the treasure with
+	the higher value is prioritized.
+	4. Calculate the total value of the selected treasures.
+
+Your task is to return an integer array priority_sums of length n - k + 1,
+where priority_sums[i] represents the priority-weighted treasure sum for
+the sub-vault corresponding to treasures[i..i + k - 1].
+
+Input Format:
+---------------
+Line-1: Four space separated integers, N, K, X, F
+Line-2: N space separated integers, boxes[].
+
+Output Format:
+-----------------
+An integer array, priority_sums[], of length n - k + 1
+
+
+Sample Input-1:
+-----------------
+8 5 2 2
+1 2 3 1 2 2 3 4
+
+Sample Output-1:
+--------------------
+[7, 9, 10, 7]
+
+Explanation:
+We calculate the priority-weighted treasure sum for each sub-vault:
+
+1. Sub-vault 1: [1, 2, 3, 1, 2]
+   - Frequencies: {1: 2, 2: 2, 3: 1}
+   - Priority scores:
+     - 1 → 2 * (1^2) = 2
+     - 2 → 2 * (2^2) = 8
+     - 3 → 1 * (3^2) = 9
+   - Top 2 treasures by priority: 3 (score 9) and 2 (score 8).
+   - Total value: 2 + 3 + 2  = 7.
+
+2. Sub-vault 2: [2, 3, 1, 2, 2]
+   - Frequencies: {2: 3, 3: 1, 1: 1}
+   - Priority scores:
+     - 2 → 3 * (2^2) = 12
+     - 3 → 1 * (3^2) = 9
+     - 1 → 1 * (1^2) = 1
+   - Top 2 treasures by priority: 2 (score 12) and 3 (score 9).
+   - Total value: 2 + 2 + 2 + 3 = 9.
+
+3. Sub-vault 3: [3, 1, 2, 2, 3]
+   - Frequencies: {3: 2, 2: 2, 1: 1}
+   - Priority scores:
+     - 3 → 2 * (3^2) = 18
+     - 2 → 2 * (2^2) = 8
+     - 1 → 1 * (1^2) = 1
+   - Top 2 treasures by priority: 3 (score 18) and 2 (score 8).
+   - Total value: 3 + 2 + 2 + 3 = 10.
+
+4. Sub-vault 4: [1, 2, 2, 3, 4]
+   - Frequencies: {1: 1, 2: 2, 3: 1, 4: 1}
+   - Priority scores:
+     - 2 → 2 * (2^2) = 8
+     - 3 → 1 * (3^2) = 9
+     - 4 → 1 * (4^2) = 16
+     - 1 → 1 * (1^2) = 1
+   - Top 2 treasures by priority: 4 (score 16) and 3 (score 9).
+   - Total value: 3 + 4  = 7.
+
+Sample Input-2:
+-----------------
+6 3 2 1
+5 5 6 7 5 6
+
+Sample Output-1:
+--------------------
+[16, 13, 13, 13]
+
+Constraints:
+1. 1 <= n == treasures.length <= 50
+2. 1 <= treasures[i] <= 50
+3. 1 <= x <= k <= treasures.length
+4. 1 <= f <= 10
+*/
+import java.util.*;
+public class Day2P2_PQ_SW{
+    public static void main(String... args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         int k = sc.nextInt();
-        int x = sc.nextInt(); // top x elements
-        int f = sc.nextInt(); // powers f
-        int[] nums = new int[n];
-        for(int i=0;i<n;i++) nums[i] = sc.nextInt();
+        int x = sc.nextInt();
+        int f = sc.nextInt();
+        int[] arr = new int[n];
+        HashMap<Integer, Integer> map = new HashMap<>();
+        ArrayList<Integer> list = new ArrayList<>();
 
-        int[] freq = new int[51];
-        PriorityQueue<Pair> pq = new PriorityQueue<>((a,b)->b.score-a.score);
-        Deque<Integer> dq = new LinkedList<>(); // To store the Last added element
-        List<Integer> res = new ArrayList<>();
-
-        for(int i=0;i<k;i++){ // Freq of nums in first window
-            freq[nums[i]]++;
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
         }
-        for(int j=0;j<51;j++){ // adding them to pq
-            if(freq[j]!=0){
-                pq.offer(new Pair(j, (int)Math.pow(j, freq[j])));
+
+        int l = 0, r = 0;
+        while (r < n) {
+            map.put(arr[r], map.getOrDefault(arr[r], 0) + 1);
+            PriorityQueue<int[]> pq = new PriorityQueue<>((a,b)->{
+                    return b[1]==a[1] ? b[0]-a[0] : b[1]-a[1];
+            });
+
+            if (r >= k - 1) {
+                for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+                    int key = entry.getKey();
+                    int val = entry.getValue();
+                    int tot = val * (int) Math.pow(key, f);
+                    pq.offer(new int[]{key, tot});
+                }
+                int temp = x;
+                int sum = 0;
+                while (temp > 0 && !pq.isEmpty()) {
+                    int[] p = pq.poll();
+                    int freq = map.get(p[0]);
+                    sum += p[0] * freq;
+                    temp--;
+                }
+                list.add(sum);
+                map.put(arr[l], map.get(arr[l])-1);
+                if (map.get(arr[l]) == 0) map.remove(arr[l]);
+                l++;
             }
+            pq.clear();
+            r++;
         }
-        int val = 0;
-        for(int temp=0;temp<x;temp++){ // val of top x nums
-            Pair p = pq.poll();
-            dq.offerLast(p.num);
-            val += p.num;
-            pq.offer(new Pair(p.num, (int)p.score/p.num));
-        }
-        res.add(val);
-
-        for(int i=k;i<n;i++){ // sliding the window
-            freq[nums[i-k]]--;
-            freq[nums[k]]++;
-            pq.offer(new Pair(nums[i], freq[nums[i]]));
-            val -= (!dq.isEmpty()) ? dq.pollFirst(): 0;
-            Pair p = pq.poll();
-            val += p.num;
-            res.add(val);
-            pq.offer(new Pair(p.num, p.score/p.num));
-        }
-        System.out.println(res);
-    }
-}
-class Pair {
-    int num;
-    int score;
-    public Pair(int num, int score){
-        this.num = num;
-        this.score = score;
+        System.out.println(list);
     }
 }
