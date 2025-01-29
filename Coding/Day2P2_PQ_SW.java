@@ -139,5 +139,6 @@ public class Day2P2_PQ_SW{
             r++;
         }
         System.out.println(list);
+        sc.close();
     }
 }

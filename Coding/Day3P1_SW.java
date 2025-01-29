@@ -85,5 +85,6 @@ public class Day3P1_SW {
             r++;
         }
         System.out.println(res);
+        sc.close();
     }
 }

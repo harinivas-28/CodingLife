@@ -73,7 +73,8 @@ class Temp {
              int num = Integer.parseInt(s.substring(i, i+k));
              res += (sNum%num==0 && isPrime(num)) ? 1: 0;
          }
-        System.out.println(res);
+         System.out.println(res);
+         sc.close();
     }
     private static boolean isPrime(int num){
         if(num<=1) return false;
