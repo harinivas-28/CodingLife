@@ -21,7 +21,7 @@ for n_class in range(len(blob_centers)):
               c=colours[n_class],
               s=30,
               label=str(n_class))
-
+plt.show()
 # Split the data
 train_data, test_data, train_labels, test_labels = train_test_split(data,
                                                                     labels,
