@@ -18,7 +18,7 @@ The priority-weighted treasure sum of a sub-vault is calculated as follows:
 
 Your task is to return an integer array priority_sums of length n - k + 1,
 where priority_sums[i] represents the priority-weighted treasure sum for
-the sub-vault corresponding to treasures[i..i + k - 1].
+the sub-vault corresponding to treasures[i...i + k - 1].
 
 Input Format:
 ---------------
