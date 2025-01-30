@@ -59,7 +59,7 @@ In a distant galaxy, there exists an ancient space station covered in a vast
 
 import java.util.*;
 
-class Temp {
+class Temp1 {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         String s = sc.next();

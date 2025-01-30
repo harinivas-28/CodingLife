@@ -5,14 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="85836784-ae34-4e39-bad1-80e981d812dc" name="Changes" comment="Added .gitignore file to ignore .class files">
-      <change afterPath="$PROJECT_DIR$/Coding/Day3P1_SW.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Coding/Day3P2_SW.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Coding/Day4P1_SW.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Coding/Day4P2_SW.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Coding/Day1P1_SW.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Coding/Day1P2_SW.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Coding/Day2P2_PQ.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Coding/Day2P2_PQ_SW.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Coding/Day2P2_PQ_SW.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/Day2P2_PQ_SW.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Coding/Day3P2_SW.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/Day3P2_SW.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

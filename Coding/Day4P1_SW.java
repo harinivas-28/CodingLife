@@ -74,7 +74,7 @@ k <= n
  */
 import java.util.*;
 
-public class Day4P2_SW {
+public class Day4P1_SW {
     public static void main(String... args){
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
@@ -114,5 +114,6 @@ public class Day4P2_SW {
             r++;
         }
         System.out.println(res);
+        sc.close();
     }
 }

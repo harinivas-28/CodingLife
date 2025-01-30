@@ -61,7 +61,7 @@ Sample Output-2:
  */
 import java.util.*;
 
-public class Temp {
+public class Day4P2_SW {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
@@ -94,5 +94,6 @@ public class Temp {
             r++;
         }
         System.out.println(res);
+        sc.close();
     }
 }
