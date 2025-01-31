@@ -143,7 +143,7 @@ public class Day5P1_SW {
         List<Integer> list = new ArrayList<>();
         int res = 0;
         for(int i=0;i<=(r-l+1);i++){
-            int x=0, y=0;
+            int y=0;
             while(y<n){
                 list.add(nums[y]);
                 if(y>=i+l-1){
@@ -156,5 +156,6 @@ public class Day5P1_SW {
             }
         }
         System.out.println(res);
+        sc.close();
     }
 }

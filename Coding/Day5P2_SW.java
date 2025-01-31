@@ -108,5 +108,6 @@ public class Day5P2_SW {
             r++;
         }
         System.out.println(Arrays.toString(res));
+        sc.close();
     }
 }

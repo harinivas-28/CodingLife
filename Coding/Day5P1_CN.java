@@ -59,6 +59,7 @@ public class Day5P1_CN {
         System.out.println(toString(n1).compareTo(toString(n2)) == 0);
     }
 
+    @SuppressWarnings("unused")
     private static int toInteger(byte[] bytes) {
         int result = 0;
         for (byte b : bytes) {  // 1 byte is 8 bits so

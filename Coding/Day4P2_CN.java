@@ -36,6 +36,7 @@ import java.util.Scanner;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
+@SuppressWarnings("unused")
 public class Day4P2_CN {
     public static void main(String[] args) throws UnknownHostException {
         Scanner sc = new Scanner(System.in);
