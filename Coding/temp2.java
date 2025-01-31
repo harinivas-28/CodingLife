@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
-public class Day4_Subnet2 {
+public class Day4 {
     public static void main(String[] args) throws UnknownHostException {
         Scanner sc = new Scanner(System.in);
         String s = sc.next();

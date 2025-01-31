@@ -2,4 +2,4 @@ SW -> Sliding Window
 
 PQ -> Priority Queue
 
-Subnet -> Networking Problem
+Subnet/CN -> Computer Networking Problem 

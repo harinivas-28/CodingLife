@@ -11,7 +11,7 @@ Write a program to simulate how the students are organized using a priority queu
 Input Format:
 -------------
 Line-1: An integer, N
-Next N lines: space sepaarted string and integer, name and score of each student.
+Next N lines: space separated string and integer, name and score of each student.
 
 Output Format:
 --------------
