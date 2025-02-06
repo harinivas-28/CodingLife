@@ -32,7 +32,7 @@ Sample Output-2:
 192.0.2.0 192.0.2.255
 
  */
-package Coding;
+package Coding.java;
 import java.util.Scanner;
 
 public class Day5P1_CN {

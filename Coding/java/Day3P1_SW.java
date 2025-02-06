@@ -55,8 +55,11 @@ You are an architect tasked with designing a series of connected rooms in a
         1 <= maxArea <= 10^9
 */
 
-package Coding;
-import java.util.*;
+package Coding.java;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
 
 public class Day3P1_SW {
     public static void main(String... args){

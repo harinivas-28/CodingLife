@@ -4,29 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85836784-ae34-4e39-bad1-80e981d812dc" name="Changes" comment="Added .gitignore file to ignore .class files">
-      <change afterPath="$PROJECT_DIR$/Coding/Coding/Day6P1_Trees.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Coding/Coding/Day6P2_Trees.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Coding/Coding/Day6P3_Trees.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Coding/Coding/Day6P4_Trees.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Coding/Coding/Day6P5_Trees.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Coding/Coding/README.md" afterDir="false" />
+    <list default="true" id="85836784-ae34-4e39-bad1-80e981d812dc" name="Changes" comment="Changed All the files into a package. Added new files Trees on Day6">
+      <change afterPath="$PROJECT_DIR$/Coding/cpp/Day2P2_PQ.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Coding/Day1P1_SW.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/Coding/Day1P1_SW.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Coding/Day1P2_SW.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/Coding/Day1P2_SW.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Coding/Day2P2_PQ.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/Coding/Day2P2_PQ.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Coding/Day2P2_PQ_SW.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/Coding/Day2P2_PQ_SW.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Coding/Day3P1_SW.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/Coding/Day3P1_SW.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Coding/Day3P2_SW.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/Coding/Day3P2_SW.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Coding/Day4P1_CN.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/Coding/Day4P1_CN.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Coding/Day4P1_SW.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/Coding/Day4P1_SW.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Coding/Day4P2_CN.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/Coding/Day4P2_CN.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Coding/Day4P2_SW.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/Coding/Day4P2_SW.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Coding/Day5P1_CN.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/Coding/Day5P1_CN.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Coding/Day5P1_SW.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/Coding/Day5P1_SW.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Coding/Day5P2_SW.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/Coding/Day5P2_SW.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Coding/Day1P1_SW.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/java/Day1P1_SW.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Coding/Day1P2_SW.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/java/Day1P2_SW.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Coding/Day2P2_PQ.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/java/Day2P2_PQ.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Coding/Day2P2_PQ_SW.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/java/Day2P2_PQ_SW.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Coding/Day3P1_SW.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/java/Day3P1_SW.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Coding/Day3P2_SW.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/java/Day3P2_SW.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Coding/Day4P1_CN.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/java/Day4P1_CN.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Coding/Day4P1_SW.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/java/Day4P1_SW.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Coding/Day4P2_CN.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/java/Day4P2_CN.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Coding/Day4P2_SW.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/java/Day4P2_SW.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Coding/Day5P1_CN.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/java/Day5P1_CN.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Coding/Day5P1_SW.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/java/Day5P1_SW.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Coding/Day5P2_SW.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/java/Day5P2_SW.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Coding/Day6P1_Trees.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/java/Day6P1_Trees.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Coding/Day6P2_Trees.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/java/Day6P2_Trees.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Coding/Day6P3_Trees.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/java/Day6P3_Trees.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Coding/Day6P4_Trees.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/java/Day6P4_Trees.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Coding/Day6P5_Trees.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/java/Day6P5_Trees.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Coding/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Coding/Student.class" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/Student.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Coding/Student.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fs.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Fs.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,21 +72,29 @@
     <option name="openDirectoriesWithSingleClick" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;full.screen.before.presentation.mode&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Code Playground/Fs&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.tools&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "full.screen.before.presentation.mode": "false",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Code Playground/Fs/Coding/java",
+    "settings.editor.selected.configurable": "configurable.group.tools"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Code Playground\Fs\Coding\java" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Code Playground\Fs\Coding\java" />
+      <recent name="C:\Code Playground\Fs\Coding\Coding" />
       <recent name="C:\Code Playground\Fs\Coding" />
       <recent name="C:\Code Playground\Fs" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="Coding.java" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -129,7 +138,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738154060514</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Changed All the files into a package. Added new files Trees on Day6">
+      <option name="closed" value="true" />
+      <created>1738842361966</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1738842361966</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -146,6 +163,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="day 2 P2 completed with using sliding window and priority queue" />
     <MESSAGE value="Added .gitignore file to ignore .class files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added .gitignore file to ignore .class files" />
+    <MESSAGE value="Changed All the files into a package. Added new files Trees on Day6" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed All the files into a package. Added new files Trees on Day6" />
   </component>
 </project>

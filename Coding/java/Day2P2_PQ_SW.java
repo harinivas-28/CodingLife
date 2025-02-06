@@ -94,7 +94,7 @@ Constraints:
 3. 1 <= x <= k <= treasures.length
 4. 1 <= f <= 10
 */
-package Coding;
+package Coding.java;
 import java.util.*;
 public class Day2P2_PQ_SW{
     public static void main(String... args) {

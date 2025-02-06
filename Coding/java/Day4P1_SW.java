@@ -72,8 +72,12 @@ k <= n
 0 ≤ restrictedRatings.length ≤ 1000
 
  */
-package Coding;
-import java.util.*;
+package Coding.java;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Scanner;
 
 public class Day4P1_SW {
     public static void main(String... args){

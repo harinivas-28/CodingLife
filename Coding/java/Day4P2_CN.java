@@ -32,9 +32,10 @@ Sample Output-2:
 192.0.2.0 192.0.2.255
 
  */
-package Coding;
-import java.util.Scanner;
+package Coding.java;
+
 import java.net.UnknownHostException;
+import java.util.Scanner;
 
 @SuppressWarnings("unused")
 public class Day4P2_CN {

@@ -30,8 +30,9 @@ Sample Output-2:
 255.255.252.0
 
  */
-package Coding;
-import java.util.*;
+package Coding.java;
+
+import java.util.Scanner;
 
 public class Day4P1_CN {
     public static void main(String... args){

@@ -44,7 +44,7 @@ The given Planetary Layout (in-order) and Survey Order (pre-order) correspond to
 Level Order: [1, 2, 3, 4, 5, 6, 7]
 
  */
-package Coding;
+package Coding.java;
 public class Day6P5_Trees {
 
 }

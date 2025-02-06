@@ -52,7 +52,7 @@ Sample Output-2:
 (Charlie, 85)
 
 */
-package Coding;
+package Coding.java;
 import java.util.*;
 public class Day2P2_PQ {
     public static void main(String[] args){

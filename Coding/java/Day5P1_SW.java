@@ -129,8 +129,12 @@ are the same, resulting in a difference of 0.
 // }
 
 // Using List
-package Coding;
-import java.util.*;
+package Coding.java;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
 public class Day5P1_SW {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);

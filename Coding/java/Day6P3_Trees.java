@@ -62,7 +62,7 @@ Level 3 (Odd) → 4 5 6 7 (Left to Right)
 
 
  */
-package Coding;
+package Coding.java;
 
 public class Day6P3_Trees {
 }

@@ -1,4 +1,5 @@
-package Coding;
+package Coding.java;
+
 import java.util.*;
 /*
 You are developing an application for a garden management system where each tree

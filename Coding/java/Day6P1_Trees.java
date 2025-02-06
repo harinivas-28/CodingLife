@@ -1,4 +1,5 @@
-package Coding;
+package Coding.java;
+
 import java.util.*;
 /*
 In a distant galaxy, an ancient civilization built a hierarchical communication

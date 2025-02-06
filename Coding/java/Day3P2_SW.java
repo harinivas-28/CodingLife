@@ -57,8 +57,9 @@ In a distant galaxy, there exists an ancient space station covered in a vast
 
  */
 
-package Coding;
-import java.util.*;
+package Coding.java;
+
+import java.util.Scanner;
 
 public class Day3P2_SW {
     public static void main(String[] args){

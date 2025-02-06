@@ -1,4 +1,4 @@
-package Coding;
+package Coding.java;
 import java.util.*;
 /*
 In a distant future, humanity has begun interstellar colonization, establishing
