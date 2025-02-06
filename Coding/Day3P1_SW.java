@@ -55,6 +55,7 @@ You are an architect tasked with designing a series of connected rooms in a
         1 <= maxArea <= 10^9
 */
 
+package Coding;
 import java.util.*;
 
 public class Day3P1_SW {

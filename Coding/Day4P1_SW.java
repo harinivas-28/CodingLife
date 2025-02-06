@@ -72,6 +72,7 @@ k <= n
 0 ≤ restrictedRatings.length ≤ 1000
 
  */
+package Coding;
 import java.util.*;
 
 public class Day4P1_SW {

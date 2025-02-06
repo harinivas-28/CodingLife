@@ -70,7 +70,7 @@
 //         System.out.println(res);
 //     }
 // }
-
+package Coding;
  import java.util.*;
 
 public class Day1P1_SW {

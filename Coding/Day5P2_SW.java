@@ -79,6 +79,7 @@ Constraints:
 
  */
 
+package Coding;
 import java.util.Arrays;
 import java.util.Scanner;
 

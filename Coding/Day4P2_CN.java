@@ -32,8 +32,8 @@ Sample Output-2:
 192.0.2.0 192.0.2.255
 
  */
+package Coding;
 import java.util.Scanner;
-import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 @SuppressWarnings("unused")

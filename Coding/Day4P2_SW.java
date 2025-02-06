@@ -59,6 +59,7 @@ Sample Output-2:
 -2
 
  */
+package Coding;
 import java.util.*;
 
 public class Day4P2_SW {

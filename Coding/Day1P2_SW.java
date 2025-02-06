@@ -1,3 +1,4 @@
+package Coding;
 import java.util.*;
 public class Day1P2_SW {
     public static void main(String[] args){

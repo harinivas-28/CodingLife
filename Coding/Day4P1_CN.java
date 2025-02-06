@@ -30,6 +30,7 @@ Sample Output-2:
 255.255.252.0
 
  */
+package Coding;
 import java.util.*;
 
 public class Day4P1_CN {
