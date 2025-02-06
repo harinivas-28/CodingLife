@@ -64,6 +64,7 @@ public class Day6P4_Trees {
        res = new ArrayList<>();
        inorder(root);
        System.out.println(res);
+       sc.close();
    }
    private static void inorder(TreeNode root){
        if(root==null) return;
