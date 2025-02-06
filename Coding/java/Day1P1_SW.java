@@ -98,5 +98,6 @@ public class Day1P1_SW {
             l++;
         }
         System.out.println(min==Integer.MAX_VALUE ? -1 : min);
+        sc.close();
     }
 }
