@@ -121,17 +121,3 @@ public class Day6P2_Trees {
         return res;
     }
 }
-class TreeNode {
-    TreeNode left = null;
-    TreeNode right = null;
-    int val;
-    TreeNode(int val){
-        this.val = val;
-    }
-    TreeNode(int val, TreeNode left, TreeNode right){
-        this.left = left;
-        this.right = right;
-        this.val = val;
-    }
-}
-

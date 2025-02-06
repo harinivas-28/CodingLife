@@ -59,12 +59,13 @@ public class Day6P1_Trees {
         List<Integer> post = new ArrayList<>();
         for(int i=0;i<n;i++) in.add(sc.nextInt());
         for(int i=0;i<n;i++) post.add(sc.nextInt());
-//        TreeNode root = buildTree(in, post);
+       TreeNode root = buildTree(in, post);
         TreeNode root2 = buildTree2(in, post);
-//        List<Integer> res = levelOrder(root);
+       List<Integer> res = levelOrder(root);
         List<Integer> res2 = levelOrder(root2);
-//        System.out.println(res);
-        System.out.println(res2);
+       System.out.println("Using HashMap O(1): "+res);
+        System.out.println("Using indexOf from List O(n): "+res2);
+        sc.close();
     }
     private static TreeNode buildTree2(List<Integer> in, List<Integer> post){
         postInd = post.size()-1;
