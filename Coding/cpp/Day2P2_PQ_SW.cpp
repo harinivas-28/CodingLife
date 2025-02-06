@@ -44,8 +44,12 @@ int main() {
         }
         r++;
     }
+    /*
+    Using int is generally fine for small to moderately sized vectors.
+    For very large vectors or to ensure type consistency, size_t is preferred.
+    */
     cout << "[";
-    for(size_t i=0;i<res.size();i++){ //
+    for(size_t i=0;i<res.size();i++){ 
         cout << res[i];
         if(i!=res.size()-1) cout << ", ";
     }
