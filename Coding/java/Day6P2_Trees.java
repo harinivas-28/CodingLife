@@ -75,32 +75,27 @@ public class Day6P2_Trees {
         for(int i=0;i<n;i++) pre.add(sc.nextInt());
         int a = sc.nextInt();
         int b = sc.nextInt();
-//        TreeNode root = buildTree(in, post);
         TreeNode root2 = buildTree2(in, pre);
-//        List<Integer> res = levelOrder(root);
         List<Integer> res2 = levelOrder(root2, a, b);
-//        System.out.println(res);
         System.out.println(res2);
+        sc.close();
     }
     private static TreeNode buildTree2(List<Integer> in, List<Integer> pre){
         preInd = 0;
-        return buildTreeHelper2(in, pre, preInd, in.size()-1);
+        return buildTreeHelper2(in, pre, 0, in.size()-1);
     }
     private static TreeNode buildTreeHelper2(List<Integer> in, List<Integer> pre, int start, int end){
-        // Check this
-        // Without using map ._.
-        if(start>end) return null;
+        if(start > end) return null;
         int rootVal = pre.get(preInd++);
         TreeNode root = new TreeNode(rootVal);
-//        int idx = findInd(in, rootVal, start, end);
         int idx = in.indexOf(rootVal);
-        root.right = buildTreeHelper2(in, pre, idx+1, end);
         root.left = buildTreeHelper2(in, pre, start, idx-1);
+        root.right = buildTreeHelper2(in, pre, idx+1, end);
         return root;
     }
     private static List<Integer> levelOrder(TreeNode root, int a, int b){
         List<Integer> res = new ArrayList<>();
-//        res.add(root.val);
+        if(root == null) return res;
         Queue<TreeNode> q = new LinkedList<>();
         int level = 1;
         q.offer(root);
@@ -109,16 +104,16 @@ public class Day6P2_Trees {
             List<Integer> zag = new ArrayList<>();
             for(int i=0;i<size;i++){
                 TreeNode temp = q.poll();
-                if(temp!=null){
-                    zag.add(temp.val);
-                    q.offer(temp.left);
-                    q.offer(temp.right);
+                if(temp != null){
+                    if(level >= a && level <= b) zag.add(temp.val);
+                    if(temp.left != null) q.offer(temp.left);
+                    if(temp.right != null) q.offer(temp.right);
                 }
             }
-            if(level%2==0){
-                res.addAll(zag);
-            } else {
-                Collections.reverse(zag);
+            if(level >= a && level <= b){
+                if(level % 2 == 0){
+                    Collections.reverse(zag);
+                }
                 res.addAll(zag);
             }
             level++;
