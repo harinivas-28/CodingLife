@@ -1,5 +1,5 @@
-#ifndef TREENODE_H //
-#define TREENODE_H //
+#ifndef TREENODE_H // Todo: Learn how this class is implemented
+#define TREENODE_H // Todo: How it gets imported?
 
 #include<iostream>
 using namespace std;

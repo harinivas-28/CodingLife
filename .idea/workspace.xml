@@ -5,29 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="85836784-ae34-4e39-bad1-80e981d812dc" name="Changes" comment="Changed All the files into a package. Added new files Trees on Day6">
-      <change afterPath="$PROJECT_DIR$/Coding/cpp/Day2P2_PQ.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Coding/java/Day7P1_Trees.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Coding/java/Day7P2_Trees.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Coding/Day1P1_SW.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/java/Day1P1_SW.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Coding/Day1P2_SW.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/java/Day1P2_SW.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Coding/Day2P2_PQ.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/java/Day2P2_PQ.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Coding/Day2P2_PQ_SW.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/java/Day2P2_PQ_SW.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Coding/Day3P1_SW.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/java/Day3P1_SW.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Coding/Day3P2_SW.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/java/Day3P2_SW.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Coding/Day4P1_CN.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/java/Day4P1_CN.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Coding/Day4P1_SW.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/java/Day4P1_SW.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Coding/Day4P2_CN.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/java/Day4P2_CN.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Coding/Day4P2_SW.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/java/Day4P2_SW.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Coding/Day5P1_CN.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/java/Day5P1_CN.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Coding/Day5P1_SW.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/java/Day5P1_SW.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Coding/Day5P2_SW.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/java/Day5P2_SW.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Coding/Day6P1_Trees.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/java/Day6P1_Trees.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Coding/Day6P2_Trees.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/java/Day6P2_Trees.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Coding/Day6P3_Trees.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/java/Day6P3_Trees.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Coding/Day6P4_Trees.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/java/Day6P4_Trees.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Coding/Day6P5_Trees.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/java/Day6P5_Trees.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Coding/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Coding/Student.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fs.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Fs.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Coding/cpp/TreeNode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/cpp/TreeNode.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Coding/java/TreeNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/Coding/java/TreeNode.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +62,7 @@
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Code Playground/Fs/Coding/java",
-    "settings.editor.selected.configurable": "configurable.group.tools"
+    "settings.editor.selected.configurable": "preferences.toDoOptions"
   }
 }]]></component>
   <component name="RecentsManager">
