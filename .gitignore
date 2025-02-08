@@ -1,2 +1,4 @@
 *.class
 *.exe
+.idea
+.vscode
