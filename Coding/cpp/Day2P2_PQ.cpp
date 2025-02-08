@@ -20,6 +20,21 @@ public:
         }
         return score < other.score; // Higher score comes first
     }
+    /*
+    Here's what each part means:
+
+    bool:
+    This indicates that the function returns a boolean value (true or false). The returned value tells whether the current Student object is considered "less than" the other Student object according to the criteria defined in the function.
+
+    operator<:
+    This is the name of the function. In C++, you can overload operators so that they work with your custom classes. By defining operator<, you're specifying how the < operator should work when comparing two Student objects.
+
+    (const Student& other):
+    This is the parameter list. It means the function takes one parameter named other which is a reference to a Student object. The const qualifier means that this parameter will not be modified by the function. This parameter represents the Student object being compared to the current object.
+
+    const at the end:
+    This means that the operator function will not modify any member variables of the current Student object (the one on the left-hand side of the < operator). It promises that calling this function is safe and does not change the object’s state.
+    */
 
     // Overload the << operator for easy printing
     friend ostream& operator<<(ostream& os, const Student& student) {
