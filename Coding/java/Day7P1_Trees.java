@@ -1,11 +1,6 @@
 package Coding.java;
 
-import com.sun.source.tree.Tree;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 /*
 Write a program to construct a binary tree from level-order input, while treating -1

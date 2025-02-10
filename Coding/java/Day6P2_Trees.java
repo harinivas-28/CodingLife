@@ -60,7 +60,6 @@ package Coding.java;
 import java.util.*;
 public class Day6P2_Trees {
     private static int postInd;
-    @SuppressWarnings("unchecked")
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
@@ -69,8 +68,7 @@ public class Day6P2_Trees {
         for(int i=0;i<n;i++) in.add(sc.nextInt());
         for(int i=0;i<n;i++) post.add(sc.nextInt());
         int q = sc.nextInt();
-        @SuppressWarnings("rawtypes")
-        List<int[]> pairs = new ArrayList();
+        List<int[]> pairs = new ArrayList<>();
         while(q-->0){
             int l = sc.nextInt();
             int r = sc.nextInt();
@@ -94,29 +92,33 @@ public class Day6P2_Trees {
         root.left = buildTreeHelper(in, post, start, idx-1);
         return root;
     }
-    private static List<List<Integer>> levelOrder(TreeNode root, List<int[]> pairs){
-        List<Integer> lvl = new ArrayList<>();
-//        res.add(root.val);
-        Queue<TreeNode> q = new LinkedList<>();
-        q.offer(root);
-        while(!q.isEmpty()){
-            int size = q.size();
-            for(int i=0;i<size;i++){
-                TreeNode temp = q.poll();
-                if(temp!=null){
-                    lvl.add(temp.val);
-                    q.offer(temp.left);
-                    q.offer(temp.right);
-                }
+    private static List<List<Integer>> levelOrder(TreeNode root, List<int[]> pairs) {
+        List<List<Integer>> levels = new ArrayList<>();
+        if (root == null) return levels;
+        
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            List<Integer> level = new ArrayList<>();
+            for (int i = 0; i < size; i++) {
+                TreeNode node = queue.poll();
+                level.add(node.val);
+                if (node.left != null) queue.offer(node.left);
+                if (node.right != null) queue.offer(node.right);
             }
+            levels.add(level);
         }
+        
         List<List<Integer>> res = new ArrayList<>();
-        for(int[] pair: pairs){
+        for (int[] pair : pairs) {
             int l = pair[0];
             int r = pair[1];
-            int start = 2*(l-1)-1;
-            int end = Math.min(lvl.size()-1, 2*(r)-2);
-            List<Integer> temp = lvl.subList((start<0) ? 0 : start, end+1);
+            List<Integer> temp = new ArrayList<>();
+            for (int i = l - 1; i < r && i < levels.size(); i++) {
+                temp.addAll(levels.get(i));
+            }
             res.add(temp);
         }
         return res;
