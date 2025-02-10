@@ -1,123 +1,125 @@
-package Coding.java;
-import java.util.*;
 /*
-In a distant future, humanity has begun interstellar colonization, establishing
-zones of habitation and control on a new planet. Scientists have recorded two
-types of data regarding how these zones were structured:
+In a distant galaxy, an ancient civilization built a hierarchical communication 
+network of interconnected relay stations. The structure of this network can be 
+reconstructed using two ancient data logs:
+    - Beacon Activation Order (analogous to in-order traversal)
+    - Final Signal Sent Order (analogous to post-order traversal)
 
-1. Survey Order (analogous to pre-order traversal) – This record details how
-the colonization started, with the first zone established and then expanding
-into new zones following a systematic approach.
-2. Planetary Layout (analogous to in-order traversal) – This document shows
-how zones were positioned relative to each other on the map, based on
-territorial boundaries.
+Using these logs, we can reconstruct the original relay network and process 
+queries about signals reaching specific hierarchical levels.
 
-Using this information, scientists need to reconstruct the colonization hierarchy
-(binary tree of zones) and analyze areas within a specific range of levels.
-However, due to security concerns, patrol teams will scan these zones in a
-zigzag pattern:
-    - Odd levels (starting from 1) should be inspected from left to right.
-    - Even levels should be inspected from right to left.
+Given the Beacon Activation Order and the Final Signal Sent Order of a galactic 
+communication network, reconstruct the relay network. After reconstructing the 
+hierarchy, process multiple queries to identify which stations transmitted 
+signals within a given range of levels. Each query consists of a lower level 
+and an upper level, and the output should list the relay stations in the order 
+they appear in a level-wise transmission sequence.
 
 Input Format:
 -------------
-An integer N representing the number of zones colonized.
-N space-separated integers representing the Planetary Layout Order (in-order).
-N space-separated integers representing the Survey Order (pre-order).
-Two space sepaarted integers,Lower Level (L), Upper Level (U)
+An integer N representing the number of relay stations in the network.
+A space-separated list of N integers representing the Beacon Activation Order (similar to in-order traversal).
+A space-separated list of N integers representing the Final Signal Sent Order (similar to post-order traversal).
+An integer Q representing the number of queries.
+Q pairs of integers, each representing a query in the form:
+Minimum Transmission Depth (L)
+Maximum Transmission Depth (U)
 
 Output Format:
 --------------
-Print all zone IDs within the specified levels, but in spiral order:
-    - Odd levels → Left to Right.
-    - Even levels → Right to Left.
+For each query, print the relay stations in order of their signal transmissions within the given depth range
+
 
 Sample Input:
 -------------
 7
 4 2 5 1 6 3 7
-1 2 4 5 3 6 7
+4 5 2 6 7 3 1
+2
+1 2
 2 3
 
 Sample Output:
 --------------
-3 2 4 5 6 7
+[1, 2, 3]
+[2, 3, 4, 5, 6, 7]
+
 
 Explanation:
 ------------
-The given Planetary Layout (in-order) and Survey Order (pre-order) correspond
-to the following colonization hierarchy:
-
+The logs correspond to the following hierarchical relay network:
         1
        / \
       2   3
      / \  / \
     4   5 6  7
-
-Levels 2 to 3 in Regular Order:
-Level 2 → 2 3
-Level 3 → 4 5 6 7
-
-Spiral Order:
-Level 2 (Even) → 3 2 (Right to Left)
-Level 3 (Odd) → 4 5 6 7 (Left to Right)
-
-
- */
+Query 1 (Transmission Levels 1 to 2): 1 2 3
+Query 2 (Transmission Levels 2 to 3): 2 3 4 5 6 7
+*/
+package Coding.java;
+import java.util.*;
 public class Day6P2_Trees {
-    private static int preInd;
+    private static int postInd;
+    @SuppressWarnings("unchecked")
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         List<Integer> in = new ArrayList<>();
-        List<Integer> pre = new ArrayList<>();
+        List<Integer> post = new ArrayList<>();
         for(int i=0;i<n;i++) in.add(sc.nextInt());
-        for(int i=0;i<n;i++) pre.add(sc.nextInt());
-        int a = sc.nextInt();
-        int b = sc.nextInt();
-        TreeNode root2 = buildTree2(in, pre);
-        List<Integer> res2 = levelOrder(root2, a, b);
-        System.out.println(res2);
+        for(int i=0;i<n;i++) post.add(sc.nextInt());
+        int q = sc.nextInt();
+        @SuppressWarnings("rawtypes")
+        List<int[]> pairs = new ArrayList();
+        while(q-->0){
+            int l = sc.nextInt();
+            int r = sc.nextInt();
+            pairs.add(new int[]{l,r});
+        }
+       TreeNode root = buildTree(in, post);
+       List<List<Integer>> res = levelOrder(root, pairs);
+       System.out.println(res);
         sc.close();
     }
-    private static TreeNode buildTree2(List<Integer> in, List<Integer> pre){
-        preInd = 0;
-        return buildTreeHelper2(in, pre, 0, in.size()-1);
+    private static TreeNode buildTree(List<Integer> in, List<Integer> post){
+        postInd = post.size()-1;
+        return buildTreeHelper(in, post, 0, postInd);
     }
-    private static TreeNode buildTreeHelper2(List<Integer> in, List<Integer> pre, int start, int end){
-        if(start > end) return null;
-        int rootVal = pre.get(preInd++);
+    private static TreeNode buildTreeHelper(List<Integer> in, List<Integer> post, int start, int end){
+        if(start>end) return null;
+        int rootVal = post.get(postInd--);
         TreeNode root = new TreeNode(rootVal);
-        int idx = in.indexOf(rootVal);
-        root.left = buildTreeHelper2(in, pre, start, idx-1);
-        root.right = buildTreeHelper2(in, pre, idx+1, end);
+        int idx = in.indexOf(root.val);
+        root.right = buildTreeHelper(in, post, idx+1, end);
+        root.left = buildTreeHelper(in, post, start, idx-1);
         return root;
     }
-    private static List<Integer> levelOrder(TreeNode root, int a, int b){
-        List<Integer> res = new ArrayList<>();
-        if(root == null) return res;
+    private static List<List<Integer>> levelOrder(TreeNode root, List<int[]> pairs){
+        List<Integer> lvl = new ArrayList<>();
+//        res.add(root.val);
         Queue<TreeNode> q = new LinkedList<>();
-        int level = 1;
         q.offer(root);
         while(!q.isEmpty()){
             int size = q.size();
-            List<Integer> zag = new ArrayList<>();
             for(int i=0;i<size;i++){
                 TreeNode temp = q.poll();
-                if(temp != null){
-                    if(level >= a && level <= b) zag.add(temp.val);
-                    if(temp.left != null) q.offer(temp.left);
-                    if(temp.right != null) q.offer(temp.right);
+                if(temp!=null){
+                    lvl.add(temp.val);
+                    q.offer(temp.left);
+                    q.offer(temp.right);
                 }
             }
-            if(level >= a && level <= b){
-                if(level % 2 == 0){
-                    Collections.reverse(zag);
-                }
-                res.addAll(zag);
-            }
-            level++;
+        }
+        List<List<Integer>> res = new ArrayList<>();
+        for(int[] pair: pairs){
+            int l = pair[0];
+            int r = pair[1];
+            int start = 2*(l-1)-1;
+            int end = Math.min(lvl.size()-1, 2*(r)-2);
+            List<Integer> temp = lvl.subList((start<0) ? 0 : start, end+1);
+            res.add(temp);
         }
         return res;
     }
 }
+
