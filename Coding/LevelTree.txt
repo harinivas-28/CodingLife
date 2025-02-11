@@ -1,0 +1,135 @@
+/*
+Write a program to construct a binary tree from level-order input, while treating -1 
+as a placeholder for missing nodes. The program reads input, constructs the tree, 
+and provides an in-order traversal to verify correctness.
+
+Input Format:
+---------------
+Space separated integers, level order data (where -1 indicates null node).
+
+Output Format:
+-----------------
+Print the in-order data of the tree.
+
+
+Sample Input:
+----------------
+1 2 3 -1 -1 4 5
+
+Sample Output:
+----------------
+2 1 4 3 5
+
+Explanation:
+--------------
+    1
+   / \
+  2   3
+     / \
+    4   5
+
+
+Sample Input:
+----------------
+1 2 3 4 5 6 7
+
+Sample Output:
+----------------
+4 2 5 1 6 3 7
+
+Explanation:
+--------------
+        1
+       / \
+      2   3
+     / \  / \
+    4  5 6  7
+
+====================================
+case =1
+input =1 2 3 -1 5 6 -1
+output =2 5 1 6 3
+
+case =2
+input =1 2 -1 3 -1 4
+output =4 3 2 1
+
+case =3
+input =1 -1 2 -1 3 -1 4
+output =1 2 3 4
+
+case =4
+input =1 2 3 -1 5 -1 6 7 -1 -1 -1 8
+output =2 8 7 5 1 3 6
+
+case =5
+input =1 2 3 -1 5 6 -1 7 -1 -1 -1 8 -1 9
+output =2 9 8 7 5 1 6 3
+
+case =6
+input =1 2 -1 3 4 -1 5 -1 -1 6 -1 7 8 -1 9 -1 -1 -1 10
+output =3 7 9 10 6 8 5 2 4 1
+
+=============================================
+import java.util.*;
+
+class TreeNode {
+    Integer val;
+    TreeNode left, right;
+    
+    TreeNode(Integer val) {
+        this.val = val;
+        this.left = this.right = null;
+    }
+}
+
+public class LevelTree {
+    
+    public static TreeNode buildTree(List<Integer> data) {
+        if (data.isEmpty() || data.get(0) == -1) return null;
+        
+        Queue<TreeNode> queue = new LinkedList<>();
+        TreeNode root = new TreeNode(data.get(0));
+        queue.offer(root);
+        
+        int i = 1;
+        while (i < data.size()) {
+            TreeNode current = queue.poll();
+            
+            if (i < data.size() && data.get(i) != -1) {
+                current.left = new TreeNode(data.get(i));
+                queue.offer(current.left);
+            }
+            i++;
+            
+            if (i < data.size() && data.get(i) != -1) {
+                current.right = new TreeNode(data.get(i));
+                queue.offer(current.right);
+            }
+            i++;
+        }
+        
+        return root;
+    }
+    
+    public static void inOrderTraversal(TreeNode root) {
+        if (root == null) return;
+        inOrderTraversal(root.left);
+        System.out.print(root.val + " ");
+        inOrderTraversal(root.right);
+    }
+    
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String[] input = scanner.nextLine().split(" ");
+        List<Integer> data = new ArrayList<>();
+        for(String s:input) {
+            data.add(Integer.parseInt(s));
+        }
+        scanner.close();
+        
+        TreeNode root = buildTree(data);
+        
+        inOrderTraversal(root);
+    }
+}
