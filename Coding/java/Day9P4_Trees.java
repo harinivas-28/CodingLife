@@ -83,52 +83,48 @@ public class Day9P4_Trees {
                 .mapToInt(Integer::parseInt)
                 .toArray();
         TreeNode root = buildTree(vals);
-        
-        List<Integer> result = new ArrayList<>();
-        if (root != null) {
-            result.add(root.val); 
-            leftBoundary(root.left, result);
-            addLeaves(root, result); 
-            rightBoundary(root.right, result); 
-        }
-
-        System.out.println(result);
+        List<Integer> res = boundaryTraversal(root);
+        System.out.println(res);        
         sc.close();
     }
-
-    private static void leftBoundary(TreeNode node, List<Integer> result) {
-        while (node != null) {
-            if (!(node.left == null && node.right == null)) { 
-                result.add(node.val);
+    private static List<Integer> boundaryTraversal(TreeNode root){
+        List<Integer> bound = new ArrayList<>();
+        if(root==null) return bound;
+        if(root.left!=null || root.right!=null){
+            bound.add(root.val);
+        }
+        leftBound(root.left, bound);
+        leaves(root, bound);
+        rightBound(root.right, bound);
+        return bound;
+    }
+    private static void leftBound(TreeNode root, List<Integer> bound){
+        while(root!=null){
+            if(root.left!=null || root.right!=null){
+                bound.add(root.val);
             }
-            if (node.left != null) node = node.left;
-            else node = node.right;
+            root = (root.left!=null) ? root.left : root.right;
         }
     }
-
-    private static void addLeaves(TreeNode node, List<Integer> result) {
-        if (node == null) return;
-        if (node.left == null && node.right == null) {
-            result.add(node.val);
-            return;
+    private static void leaves(TreeNode root, List<Integer> bound){
+        if(root==null) return;
+        if(root.left==null && root.right==null){
+            bound.add(root.val);
         }
-        addLeaves(node.left, result);
-        addLeaves(node.right, result);
+        leaves(root.left, bound);
+        leaves(root.right, bound);
     }
-
-    private static void rightBoundary(TreeNode node, List<Integer> result) {
+    private static void rightBound(TreeNode root, List<Integer> bound){
         List<Integer> temp = new ArrayList<>();
-        while (node != null) {
-            if (!(node.left == null && node.right == null)) { 
-                temp.add(node.val);
+        while(root!=null){
+            if(root.left!=null || root.right!=null){
+                temp.add(root.val);
             }
-            if (node.right != null) node = node.right;
-            else node = node.left;
+            root = (root.right!=null) ? root.right : root.left;
         }
         Collections.reverse(temp);
-        result.addAll(temp);
+        bound.addAll(temp);
     }
-
     private static TreeNode buildTree(int[] vals){
         if (vals.length == 0 || vals[0] == -1) return null;
 

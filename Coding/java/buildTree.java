@@ -5,7 +5,7 @@ public class buildTree {
     public buildTree() {
         inorder = new ArrayList<>();
     }
-    public static TreeNode buildTree(List<Integer> levelOrder){
+    public static TreeNode createTree(List<Integer> levelOrder){
         if(levelOrder.isEmpty() || levelOrder.get(0)==-1) return null;
 
         Queue<TreeNode> q = new LinkedList<>();
