@@ -1,44 +1,40 @@
-#include<iostream>
-// #include<vector>
+#include <iostream>
+#include <vector>
+#include <cmath>
+
 using namespace std;
-
-
-// 71A
-// string tooLong(string s){
-//     int size = s.length();
-//     if(size<=10) return s;
-//     return s[0] + to_string(size-2) + s[size-1];
-// }
-
-// int main(){
-//     int t; cin >> t;
-//     // vector<string> res;
-//     while(t--){
-//         string s;
-//         cin >> s;
-//         // res.push_back(tooLong(s));
-//         cout << tooLong(s) << endl;
-//     }
-//     // for(string s: res){
-//     //     cout << s << endl;
-//     // }
-// }
-
-string perm(string& s, int n){
-    if(n==1) return s;
-    int i = 0;
-    while(i<n && s[i]==s[n]){
-        n--;
+int getScore(int x, int nums[], int n){
+    int i = n-1;
+    if(nums[i]>x) return 0;
+    while(i>=0 && nums[i]<=x){
+        x = x^nums[i];
+        i--;
     }
-    s[i] = s[n];
-    return s;
+    return x;
+}
+
+vector<int> simulate(int nums[], int queries[], int n, int q){
+    vector<int> res;
+    for(int x=0;x<q;x++){
+        res.push_back(getScore(queries[x], nums, n));
+    }
+    return res;
 }
 
 int main() {
     int t; cin >> t;
     while(t--){
-        int n; cin >> n;
-        string s; cin >> s;
-        cout << perm(s, n-1) << endl;
+        int n, q;
+        cin >> n >> q;
+        int nums[n];
+        for(int i=0;i<n;i++) cin >> nums[i];
+        int queries[q];
+        for(int i=0;i<q;i++) cin >> queries[i];
+        vector<int> res = simulate(nums, queries, n, q);
+        for(int x:res){
+            cout << x << " ";
+        }
+        cout << endl;
     }
+    return 0;
 }
