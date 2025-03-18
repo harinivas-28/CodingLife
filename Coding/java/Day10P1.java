@@ -11,8 +11,20 @@ public class Day10P1 {
         int levels = (int) Math.floor(Math.sqrt(arr.length+1));
         System.out.println(levels);
         TreeNode root = buildTree(arr);
-        // TreeNode res = buildFlipTree(root, levels);
+        TreeNode res = flipTree(root);
+        printTree(res);
         sc.close();
+    }
+    public static void printTree(TreeNode root){
+        if (root == null) return;
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        while (!queue.isEmpty()) {
+            TreeNode current = queue.poll();
+            System.out.print(current.val + " ");
+            if (current.left != null) queue.offer(current.left);
+            if (current.right != null) queue.offer(current.right);
+        }
     }
     // public static TreeNode buildFlipTree(TreeNode root, int levels){
     //     if(root==null) return null;
@@ -49,15 +61,13 @@ public class Day10P1 {
         }
         return root;
     }
+    public static TreeNode flipTree(TreeNode root){
+        if(root==null || root.left==null) return root;
+        TreeNode latestRoot=flipTree(root.left);
+        root.left.left=root.right;
+        root.left.right=root;
+        root.left=root.right=null;
+        return latestRoot;
+    }
 }
 
-/*
-public static TreeNode flipTree(TreeNode root){
-    if(root==null || root.left==null) return root;
-    TreeNode latestRoot=flipTree(root.left);
-    root.left.left=root.right;
-    root.left.right=root;
-    root.left=root.right=null;
-    return latestRoot;
-}
-*/
