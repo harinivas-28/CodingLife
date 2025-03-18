@@ -24,5 +24,6 @@ public class compsiteWord {
         } else {
             System.out.println("Given String is not composite word!");
         }
+        sc.close();
     }
 }
