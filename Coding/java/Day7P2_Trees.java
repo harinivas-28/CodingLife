@@ -100,7 +100,7 @@ public class Day7P2_Trees {
     }
     private static TreeNode buildTreeHelper(List<Integer> pre, List<Integer> post, int start, int end){
         if(preInd >= pre.size() || start> end) return null;
-        int rootVal = pre.get(preInd++); // Todo: Learn how this is working!
+        int rootVal = pre.get(preInd++); 
         TreeNode root = new TreeNode(rootVal);
         if(start==end) return root;
         int leftChild = pre.get(preInd);
