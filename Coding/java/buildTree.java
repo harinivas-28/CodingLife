@@ -2,6 +2,27 @@ package Coding.java;
 import java.util.*;
 
 public class buildTree {
+    public static TreeNode build(int[] vals){
+        if(vals.length==0 || vals[0]==-1) return null;
+        Queue<TreeNode> q = new LinkedList<>();
+        TreeNode root = new TreeNode(vals[0]);
+        q.offer(root);
+        int i = 1;
+        while(i<vals.length){
+            TreeNode curr = q.poll();
+            if(i<vals.length && vals[i]!=-1){
+                curr.left = new TreeNode(vals[i]);
+                q.offer(curr.left);
+            }
+            i++;
+            if(i<vals.length && vals[i]!=-1){
+                curr.right = new TreeNode(vals[i]);
+                q.offer(curr.right);
+            }
+            i++;
+        }
+        return root;
+    }
     public buildTree() {
         inorder = new ArrayList<>();
     }
