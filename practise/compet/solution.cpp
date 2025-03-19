@@ -38,39 +38,7 @@ ll BigMod(ll b, ll p, ll m) {
 ll mod = 1e9 + 7;
 
 void solve() {
-    ll n, a, b;
-    cin >> n >> a >> b;
-
-    ll n1 = n, a1 = a, a2 = b;
-
-    while (a2 > 0) {
-        n1 = (n1 + 1) / 2;
-        a2--;
-        if (n1 <= 1) break;
-    }
-    while (a1 > 0) {
-        n1 = n1 / 2;
-        a1--;
-        if (n1 == 0) break;
-    }
-
-    cout << n1 << " ";
-    n1 = n;
-    a1 = a;
-    a2 = b;
-
-    while (a1 > 0) {
-        n1 = n1 / 2;
-        a1--;
-        if (n1 == 0) break;
-    }
-    while (a2 > 0) {
-        n1 = (n1 + 1) / 2;
-        a2--;
-        if (n1 <= 1) break;
-    }
-
-    cout << n1 << nl;
+    
 }
 
 int main() {
