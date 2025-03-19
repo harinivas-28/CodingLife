@@ -23,6 +23,18 @@ public class buildTree {
         }
         return root;
     }
+    public static int height(TreeNode root, int s){
+        return getHt(root, s, 0);
+    }
+    private static int getHt(TreeNode root, int s, int ht){
+        if(root==null) return -1;
+        if(root.val==s) return ht;
+        int leftHt = getHt(root.left, s, ht+1);
+        if(leftHt!=-1){
+            return leftHt;
+        }
+        return getHt(root.right, s, ht+1);
+    }
     public buildTree() {
         inorder = new ArrayList<>();
     }

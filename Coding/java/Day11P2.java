@@ -1,6 +1,7 @@
 package Coding.java;
 
 import java.util.*;
+import java.util.regex.*;
 
 public class Day11P2 {
     public static void main(String[] args){
@@ -14,5 +15,18 @@ public class Day11P2 {
             }
         }
         System.out.println(set.size());
+        Set<String> res = extractYears(l);
+        System.out.println(res);
+        sc.close();
+    }
+
+    public static Set<String> extractYears(String input) {
+        Set<String> years = new HashSet<>();
+        Pattern pattern = Pattern.compile("\\d{2}-\\d{2}-(\\d{4})"); // Simplified regex
+        Matcher matcher = pattern.matcher(input);
+        while (matcher.find()) {
+            years.add(matcher.group(1)); // Extract the year (group 1)
+        }
+        return years;
     }
 }
