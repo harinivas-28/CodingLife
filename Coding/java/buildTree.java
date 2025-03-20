@@ -35,9 +35,6 @@ public class buildTree {
         }
         return getHt(root.right, s, ht+1);
     }
-    public buildTree() {
-        inorder = new ArrayList<>();
-    }
     public static TreeNode createTree(List<Integer> levelOrder){
         if(levelOrder.isEmpty() || levelOrder.get(0)==-1) return null;
 
@@ -63,6 +60,7 @@ public class buildTree {
     }
     private static List<Integer> inorder;
     public static List<Integer> getInorder(TreeNode root){
+        inorder = new ArrayList<>();
         inorderTraverse(root);
         return inorder;
     }

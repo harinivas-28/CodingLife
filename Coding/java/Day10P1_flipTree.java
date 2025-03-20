@@ -2,7 +2,7 @@ package Coding.java;
 
 import java.util.*;
 
-public class Day10P1 {
+public class Day10P1_flipTree {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         int[] arr = Arrays.stream(sc.nextLine().split(" "))

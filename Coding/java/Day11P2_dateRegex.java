@@ -3,7 +3,7 @@ package Coding.java;
 import java.util.*;
 import java.util.regex.*;
 
-public class Day11P2 {
+public class Day11P2_dateRegex {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         String l = sc.nextLine();

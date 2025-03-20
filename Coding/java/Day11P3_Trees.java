@@ -1,7 +1,7 @@
 package Coding.java;
 import java.util.*;
 
-public class Day11P3 {
+public class Day11P3_Trees {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         int[] arr = ArrayUtils.parseIntArray(sc.nextLine());

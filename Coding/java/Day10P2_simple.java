@@ -58,7 +58,7 @@ Sample Output:
  */
 import java.util.*;
 
-public class Day10P2 {
+public class Day10P2_simple {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();

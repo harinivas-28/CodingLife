@@ -53,7 +53,7 @@ Sample Output:
  */
 import java.util.*;
 
-public class Day10P3 {
+public class Day10P3_simple {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
