@@ -46,27 +46,33 @@ Sample Output-2:
 [5, 3, 3, 3, 5, 5, 5, 3]
 */
 import java.util.*;
-public class Day12P1_Simple {
-    public static void main(String[] args){
+public class Day11P1{
+    public static void main(String... args){
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        int[] arr = new int[n];
-        for(int i=0;i<n;i++) arr[i] = sc.nextInt();
-        boolean flag = true;
-        while(flag){
-            for(int i=1;i<arr.length-1;i++){
-                if(arr[i]<arr[i-1] && arr[i]<arr[i+1]){
-                    arr[i] += 1;
-                    flag = true;
-                } else if(arr[i]>arr[i-1] && arr[i]>arr[i+1]){
-                    arr[i] -= 1;
-                    flag = true;
-                } else {
-                    flag = false;
+        int[] ar = new int[n];
+        for(int i=0;i<n;i++) ar[i] = sc.nextInt();
+        
+        while(true){
+            int flag = 0;
+            int[] temp = ar.clone();
+            for(int i=1;i<n-1;i++){
+                if(ar[i] > ar[i-1] && ar[i] > ar[i+1]){
+                    temp[i]--;
+                    flag = 1;
+                }
+                if(ar[i] < ar[i-1] && ar[i] < ar[i+1]){
+                    temp[i]++;
+                    flag = 1;
                 }
             }
+            ar = temp;
+            if(flag==0) break;
+            
         }
-        for(int x: arr) System.out.print(x+" ");
+        
+        
+        System.out.println(Arrays.toString(ar));
         sc.close();
     }
 }
