@@ -27,11 +27,11 @@ public class maxDepthTreeinForest {
         sc.close();
     }
     private static int dfs(int node){
-        if(adj.get(node).isEmpty()) return 1; // Base case: leaf node has depth 1
+        if(adj.get(node).isEmpty()) return 1; 
         int maxDepth = 0;
         for(int x: adj.get(node)){
-            maxDepth = Math.max(maxDepth, dfs(x)); // Take the maximum depth of child nodes
+            maxDepth = Math.max(maxDepth, dfs(x));
         }
-        return maxDepth + 1; // Add 1 for the current node
+        return maxDepth + 1; 
     }
 }
