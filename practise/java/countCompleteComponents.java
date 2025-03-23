@@ -56,6 +56,7 @@ public class countCompleteComponents {
         return 1 + val;
     }
     private static int useDFS(int n, int[][] edges){
+        @SuppressWarnings("unchecked")
         List<Integer>[] adj = new ArrayList[n];
         for(int i=0;i<n;i++){
             adj[i] = new ArrayList<>();
