@@ -46,7 +46,7 @@ public class Day11P1_isMirror {
         int[] arr = Arrays.stream(sc.nextLine().split(" "))
                 .mapToInt(Integer::parseInt)
                 .toArray();
-        TreeNode root = buildTree.build(arr);
+        TreeNode root = BuildTree.build(arr);
         boolean res = checkTree(root, root);
         System.out.println(res);
         sc.close();

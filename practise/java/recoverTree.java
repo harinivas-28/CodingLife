@@ -3,13 +3,13 @@ package practise.java;
 import java.util.*;
 import Coding.java.ArrayUtils;
 import Coding.java.TreeNode;
-import Coding.java.buildTree;
+import Coding.java.BuildTree;
 
 public class recoverTree {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         int[] arr = ArrayUtils.parseIntArray(sc.nextLine());
-        TreeNode root = buildTree.build(arr);
+        TreeNode root = BuildTree.build(arr);
         // bruteForce(root);
         {
             swapNodes(root);

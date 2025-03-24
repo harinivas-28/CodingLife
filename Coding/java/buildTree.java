@@ -1,7 +1,7 @@
 package Coding.java;
 import java.util.*;
 
-public class buildTree {
+public class BuildTree {
     public static TreeNode build(int[] vals){
         if(vals.length==0 || vals[0]==-1) return null;
         Queue<TreeNode> q = new LinkedList<>();

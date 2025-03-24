@@ -63,11 +63,11 @@ public class Day11P3_Trees {
         int s = sc.nextInt();
         int d = sc.nextInt();
 
-        TreeNode root = buildTree.build(arr);
-        int htS = buildTree.height(root, s);
-        int htD = buildTree.height(root, d);
+        TreeNode root = BuildTree.build(arr);
+        int htS = BuildTree.height(root, s);
+        int htD = BuildTree.height(root, d);
         int lca = findLca(root, s, d);
-        int htLca = buildTree.height(root, lca);
+        int htLca = BuildTree.height(root, lca);
 
         int dist = (htS+htD)-(2*htLca);
         System.out.println("Distance from source "+s+" to destination "+d+" = "+dist);
