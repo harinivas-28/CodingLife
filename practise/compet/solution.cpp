@@ -35,29 +35,53 @@ ll lcm(ll a, ll b){
     return (a / gcd(a, b)) * b;
 }
     
+ll F(int a, int b){
+    return lcm(a,b)/gcd(a,b);
+}
+
+bool isPrime(int x) {
+    if (x <= 1) return false;
+    if (x <= 3) return true;
+    if (x % 2 == 0 || x % 3 == 0) return false;
+    for (int i = 5; i * i <= x; i += 6) {
+        if (x % i == 0 || x % (i + 2) == 0) return false;
+    }
+    return true;
+}
+
 using namespace std;
+int n, p, x, res=0;
+
+void r(int p,int a[], string s, int sum, int sec,bool v[]){
+    if(v[p] || p<0 || p>=n) return;
+    v[p] = true;
+    if(sum>=x || a[p]>=x){
+        res = min(sec, res);
+        return;
+    }
+    if(p-1>=0 && abs(a[p]-a[p-1])==1 && s[p]!=s[p-1]){
+        r(p-1, a, s, sum, sec+1, v);
+    } 
+    if(p+1<n && abs(a[p]-a[p+1])==1 && s[p]!=s[p-1]){
+        r(p+1, a, s, sum, sec+1, v);
+    }
+    v[p] = false;
+}
 
 void solve(){
-    int n;
-    cin >> n;
-    vector<int> a(n);
+    cin >> n >> p >> x;
+    int a[n];
+    bool v[n];
     FOR(i,0,n-1) cin >> a[i];
-    int res = 0, sum = 0, l = 0;
-    FOR(r,0,n-1){
-        sum += a[r];
-        while (l<=r && sum <= 100 * (r - l + 1)) {
-            sum -= a[l];
-            l++;
-        }
-        res = max(res, r - l + 1);
-    }
-    cout << res << nl;
+    string s;cin >>s;
+
+    r(p,a, s, 0, 0,v);
 }
 
 int main()
 {
 	Fast();
-     freopen("input.txt", "r", stdin);
+    freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
     // ll t;
     // cin >> t;
