@@ -50,32 +50,21 @@ bool isPrime(int x) {
 }
 
 using namespace std;
-int n, p, x, res=0;
-
-void r(int p,int a[], string s, int sum, int sec,bool v[]){
-    if(v[p] || p<0 || p>=n) return;
-    v[p] = true;
-    if(sum>=x || a[p]>=x){
-        res = min(sec, res);
-        return;
-    }
-    if(p-1>=0 && abs(a[p]-a[p-1])==1 && s[p]!=s[p-1]){
-        r(p-1, a, s, sum, sec+1, v);
-    } 
-    if(p+1<n && abs(a[p]-a[p+1])==1 && s[p]!=s[p-1]){
-        r(p+1, a, s, sum, sec+1, v);
-    }
-    v[p] = false;
-}
 
 void solve(){
-    cin >> n >> p >> x;
-    int a[n];
-    bool v[n];
-    FOR(i,0,n-1) cin >> a[i];
-    string s;cin >>s;
-
-    r(p,a, s, 0, 0,v);
+    int n;cin>>n;
+    int x=0,y=0,sum=0;
+    FOR(i,0,n-1){
+        int t;cin>>t;
+        if(t==1) x++;
+        else y++;
+        sum += t;
+    }
+    if(sum%2!=0){
+        cout << "NO" << nl;
+        return;
+    }
+    
 }
 
 int main()
@@ -83,9 +72,9 @@ int main()
 	Fast();
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
-    // ll t;
-    // cin >> t;
-    // while (t--) 
+    ll t;
+    cin >> t;
+    while (t--) 
     solve();
 }
 
