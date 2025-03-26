@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Group Chat</title>
+</head>
+<body>
+    <h2>Group Chat</h2>
+    <div id="chat"></div>
+    <input type="text" id="msg" placeholder="Type a message..." />
+    <button onclick="sendMessage()">Send</button>
+
+    <script>
+        const socket = new WebSocket('ws://192.168.5.59:8080');
+
+        socket.onopen = () => console.log('Connected to WebSocket server');
+
+        socket.onmessage = (event) => {
+            const chat = document.getElementById('chat');
+            const messageElement = document.createElement('p');
+            messageElement.textContent = event.data;  
+            chat.appendChild(messageElement);
+            chat.scrollTop = chat.scrollHeight;  
+        };
+
+        socket.onclose = () => console.log('Disconnected from WebSocket server');
+
+        function sendMessage() {
+            const input = document.getElementById('msg');
+            if (input.value.trim() !== '') {
+                socket.send(input.value);
+                input.value = '';
+            }
+        }
+    </script>
+</body>
+</html>

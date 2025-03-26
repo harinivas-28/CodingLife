@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Client</title>
+</head>
+<body>
+    <h1>WebSocket Client</h1>
+    <div>
+        <label for="command">Command:</label>
+        <input type="text" id="command" placeholder="Enter command (e.g., INSERT Alice 50000 Developer IT 5)">
+        <button id="send">Send</button>
+    </div>
+    <div>
+        <h3>Server Response:</h3>
+        <pre id="response"></pre>
+    </div>
+
+    <script>
+        const ws = new WebSocket('ws://localhost:8080');
+        const sendButton = document.getElementById('send');
+        const commandInput = document.getElementById('command');
+        const responseDisplay = document.getElementById('response');
+
+        ws.onopen = () => {
+            console.log('Connected to WebSocket server');
+        };
+
+        ws.onmessage = (event) => {
+            responseDisplay.textContent += event.data + '\n';
+        };
+
+        ws.onclose = () => {
+            console.log('Disconnected from WebSocket server');
+        };
+
+        ws.onerror = (error) => {
+            console.error('WebSocket error:', error);
+        };
+
+        sendButton.addEventListener('click', () => {
+            const command = commandInput.value.trim();
+            if (command) {
+                ws.send(command);
+                commandInput.value = '';
+            }
+        });
+    </script>
+</body>
+</html>
