@@ -8,4 +8,10 @@ public class ArrayUtils {
                      .mapToInt(Integer::parseInt)
                      .toArray();
     }
+    public static int[] parseIntArray(String input, int n) {
+        return Arrays.stream(input.split(" "))
+                .limit(n)
+                .mapToInt(Integer::parseInt)
+                .toArray();
+    }
 }
