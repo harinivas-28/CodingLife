@@ -51,20 +51,24 @@ bool isPrime(int x) {
 
 using namespace std;
 
+int f(int n, long t[]){
+    return gcd(t[0], t[n-1]);
+}
+
 void solve(){
     int n;cin>>n;
-    int x=0,y=0,sum=0;
-    FOR(i,0,n-1){
-        int t;cin>>t;
-        if(t==1) x++;
-        else y++;
-        sum += t;
-    }
-    if(sum%2!=0){
-        cout << "NO" << nl;
-        return;
-    }
-    
+    int a[n];
+    int r = 0;
+    FOR(i, 0, n-1) cin >> a[i];
+    sort(a, a+n);
+    FOR(i, 0, n-1){
+        long t[n];
+        FOR(j, 0, n-1){
+            t[j] = a[j] + a[i];
+        }
+        r = max(r, f(n, t));
+    }    
+    cout << r << nl;
 }
 
 int main()

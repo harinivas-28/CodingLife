@@ -64,5 +64,6 @@ public class Day17P1 {
             else r.add(""+(n-i));
         }
         System.out.println(r);
+        sc.close();
     }
 }
