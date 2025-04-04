@@ -35,7 +35,7 @@ public class BuildTree {
         }
         return getHt(root.right, s, ht+1);
     }
-    public static TreeNode createTree(List<Integer> levelOrder){
+    public static TreeNode build(List<Integer> levelOrder){
         if(levelOrder.isEmpty() || levelOrder.get(0)==-1) return null;
 
         Queue<TreeNode> q = new LinkedList<>();

@@ -54,5 +54,6 @@ public class coinChange {
         int r3 = dp(n, a);
         int r4 = oneDDp(n, a);
         System.out.println(r1+" "+r2+" "+r3+" "+r4);
+        sc.close();
     }
 }
