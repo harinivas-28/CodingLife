@@ -84,7 +84,7 @@ public class Day19P1_Trees {
         System.out.println(r2);
         sc.close();
     }
-    static class Pair implements Comparable<Pair>{
+    static class Pair {
         TreeNode node;
         int verLevel;
         Pair(){}
@@ -92,53 +92,33 @@ public class Day19P1_Trees {
             this.node = node;
             this.verLevel = verLevel;
         }
-        public int compareTo(Pair obj){
-            Pair other = obj;
-            if(this.verLevel!=other.verLevel) return -(other.verLevel-this.verLevel);
-
-            return -(other.node.val-this.node.val);
-        }
-    }
-    static int min = 0;
-    static int max = 0;
-
-    public static void dfs(TreeNode root, int pos){
-        if(root==null) return;
-
-        min = Math.min(min,pos);
-        max = Math.max(max,pos);
-
-        dfs(root.left,pos-1);
-        dfs(root.right,pos+1);
     }
     public static List<List<Integer>> verticalTraversal(TreeNode root) {
-        dfs(root,0);
-
-        List<List<Integer>> res = new ArrayList<>();
-        int size = (max - min) + 1;
-        for(int i = 0;i<size;i++){
-            res.add(new ArrayList<>());
-        }
-        PriorityQueue<Pair> q = new PriorityQueue<>();
-        q.add(new Pair(root,Math.abs(min)));
-
-        while(q.size()>0){
-            int currSize = q.size();
-            PriorityQueue<Pair> childq = new PriorityQueue<>();
-            while(currSize-->0){
-                Pair rem = q.remove();
-                res.get(rem.verLevel).add(rem.node.val);
-                if(rem.node.left!=null){
-                    Pair left = new Pair(rem.node.left,rem.verLevel-1);
-                    childq.add(left);
+        if(root==null) return new ArrayList<>();
+        Pair p = new Pair(root, 0);
+        Queue<Pair> q = new LinkedList<>();
+        q.offer(p);
+        TreeMap<Integer, List<Integer>> tm = new TreeMap<>();
+        tm.put(0, new ArrayList<>());
+        tm.get(0).add(root.val);
+        while(!q.isEmpty()){
+            int size = q.size();
+            for(int i=0;i<size;i++){
+                Pair t = q.poll();
+                if(t.node.left!=null){
+                    Pair l = new Pair(t.node.left, t.verLevel-1);
+                    q.offer(l);
+                    tm.putIfAbsent(l.verLevel, new ArrayList<>());
+                    tm.get(l.verLevel).add(l.node.val);
                 }
-                if(rem.node.right!=null){
-                    Pair right = new Pair(rem.node.right,rem.verLevel+1);
-                    childq.add(right);
+                if(t.node.right!=null){
+                    Pair r = new Pair(t.node.right, t.verLevel+1);
+                    q.offer(r);
+                    tm.putIfAbsent(r.verLevel, new ArrayList<>());
+                    tm.get(r.verLevel).add(r.node.val);
                 }
             }
-            q = childq;
         }
-        return res;
+        return new ArrayList<>(tm.values());
     }
 }
