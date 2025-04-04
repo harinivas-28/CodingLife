@@ -14,4 +14,7 @@ public class TreeNode {
         this.right = right;
         this.val = val;
     }
+    public String toString(){
+        return ""+this.val;
+    }
 }
