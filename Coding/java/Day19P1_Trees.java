@@ -74,33 +74,71 @@ public class Day19P1_Trees {
         }
         return r;
     }
-    private static TreeNode buildTree(int[] arr){
-        if(arr.length==0 || arr[0]==-1) return null;
-        TreeNode root = new TreeNode(arr[0]);
-        Queue<TreeNode> q = new LinkedList<>();
-        q.offer(root);
-        int i = 1;
-        while(!q.isEmpty()){
-            TreeNode curr = q.poll();
-            if(i<arr.length && arr[i]!=-1){
-                curr.left = new TreeNode(arr[i]);
-                q.offer(curr.left);
-            }
-            i++;
-            if(i<arr.length && arr[i]!=-1){
-                curr.right = new TreeNode(arr[i]);
-                q.offer(curr.right);
-            }
-            i++;
-        }
-        return root;
-    }
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         int[] arr = Arrays.stream(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-        TreeNode root = buildTree(arr);
+        TreeNode root = BuildTree.build(arr);
         List<List<Integer>> r = verticalOrderTraversal(root);
+        List<List<Integer>> r2 = verticalTraversal(root);
         System.out.println(r);
+        System.out.println(r2);
         sc.close();
+    }
+    static class Pair implements Comparable<Pair>{
+        TreeNode node;
+        int verLevel;
+        Pair(){}
+        Pair(TreeNode node,int verLevel){
+            this.node = node;
+            this.verLevel = verLevel;
+        }
+        public int compareTo(Pair obj){
+            Pair other = obj;
+            if(this.verLevel!=other.verLevel) return -(other.verLevel-this.verLevel);
+
+            return -(other.node.val-this.node.val);
+        }
+    }
+    static int min = 0;
+    static int max = 0;
+
+    public static void dfs(TreeNode root, int pos){
+        if(root==null) return;
+
+        min = Math.min(min,pos);
+        max = Math.max(max,pos);
+
+        dfs(root.left,pos-1);
+        dfs(root.right,pos+1);
+    }
+    public static List<List<Integer>> verticalTraversal(TreeNode root) {
+        dfs(root,0);
+
+        List<List<Integer>> res = new ArrayList<>();
+        int size = (max - min) + 1;
+        for(int i = 0;i<size;i++){
+            res.add(new ArrayList<>());
+        }
+        PriorityQueue<Pair> q = new PriorityQueue<>();
+        q.add(new Pair(root,Math.abs(min)));
+
+        while(q.size()>0){
+            int currSize = q.size();
+            PriorityQueue<Pair> childq = new PriorityQueue<>();
+            while(currSize-->0){
+                Pair rem = q.remove();
+                res.get(rem.verLevel).add(rem.node.val);
+                if(rem.node.left!=null){
+                    Pair left = new Pair(rem.node.left,rem.verLevel-1);
+                    childq.add(left);
+                }
+                if(rem.node.right!=null){
+                    Pair right = new Pair(rem.node.right,rem.verLevel+1);
+                    childq.add(right);
+                }
+            }
+            q = childq;
+        }
+        return res;
     }
 }
