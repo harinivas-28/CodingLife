@@ -16,7 +16,7 @@
 #define pii pair<int, int>
 #define pll pair<ll, ll>
 
-#define MOD 1e9+7
+#define MOD 1000000007
 #define INF 1e9
 #define EPS 1e-9
 #define INFLL 1e18
@@ -28,57 +28,84 @@
     cin.tie(NULL);                          \
     cout.tie(NULL);
 
-ll gcd(ll a, ll b){
-    return b==0?a:gcd(a%b, b);
-}
-ll lcm(ll a, ll b){
-    return (a / gcd(a, b)) * b;
-}
-    
-ll F(int a, int b){
-    return lcm(a,b)/gcd(a,b);
-}
+using namespace std;
 
-bool isPrime(int x) {
-    if (x <= 1) return false;
-    if (x <= 3) return true;
-    if (x % 2 == 0 || x % 3 == 0) return false;
-    for (int i = 5; i * i <= x; i += 6) {
-        if (x % i == 0 || x % (i + 2) == 0) return false;
+// Function to check if the permutation satisfies the condition
+bool check(const vector<int>& p) {
+    for (int i = 2; i <= p.size(); i++) {
+        if (max(p[i-2], p[i-1]) % i != i - 1) {
+            return false;
+        }
     }
     return true;
 }
 
-using namespace std;
-
-int f(int n, long t[]){
-    return gcd(t[0], t[n-1]);
-}
-
-void solve(){
-    int n;cin>>n;
-    int a[n];
-    int r = 0;
-    FOR(i, 0, n-1) cin >> a[i];
-    sort(a, a+n);
-    FOR(i, 0, n-1){
-        long t[n];
-        FOR(j, 0, n-1){
-            t[j] = a[j] + a[i];
+// DFS to search for a valid permutation
+bool dfs(int n, vector<int>& curr, vector<bool>& used, vector<int>& result) {
+    // If we've built a complete permutation
+    if (curr.size() == n) {
+        if (check(curr)) {
+            result = curr;
+            return true;
         }
-        r = max(r, f(n, t));
-    }    
-    cout << r << nl;
+        return false;
+    }
+    
+    // Try each number from 1 to n
+    for (int i = 1; i <= n; i++) {
+        if (!used[i]) {
+            // Early check to prune the search
+            if (curr.size() >= 1) {
+                int idx = curr.size() + 1; // 1-indexed position we're filling
+                if (idx >= 2 && max(curr.back(), i) % idx != idx - 1) {
+                    continue; // Skip this value, it can't work
+                }
+            }
+            
+            used[i] = true;
+            curr.push_back(i);
+            
+            if (dfs(n, curr, used, result)) {
+                return true;
+            }
+            
+            curr.pop_back();
+            used[i] = false;
+        }
+    }
+    
+    return false;
 }
 
-int main()
-{
-	Fast();
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
-    ll t;
+void solve() {
+    int n;
+    cin >> n;
+    
+    vector<int> curr, result;
+    vector<bool> used(n + 1, false);
+    
+    bool found = dfs(n, curr, used, result);
+    
+    if (!found) {
+        cout << -1 << endl;
+    } else {
+        for (int x : result) {
+            cout << x << " ";
+        }
+        cout << endl;
+    }
+}
+
+int main() {
+    Fast();
+    // freopen("input.txt", "r", stdin);
+    // freopen("output.txt", "w", stdout);
+    
+    int t;
     cin >> t;
-    while (t--) 
-    solve();
+    while (t--) {
+        solve();
+    }
+    
+    return 0;
 }
-
