@@ -63,53 +63,6 @@ Constraints:
 - 0 <= instruction <= 255
 
 */
-/*
-public class Day20P2_Bits {
-    public static void main(String[] args){
-        Scanner sc = new Scanner(System.in);
-        int[] a = Arrays.stream(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-        
-        int i = 0;
-        while (i < a.length) {
-            int firstByte = a[i];
-            int ones = countLeadingOnes(firstByte);
-            
-            if (ones == 0) {
-                i++;
-                continue;
-            }
-            
-            if (ones > 4 || ones == 1 || i + ones > a.length) {
-                System.out.println(false);
-                return;
-            }
-            
-            for (int j = 1; j < ones; j++) {
-                if ((a[i + j] & 0xC0) != 0x80) { 
-                    System.out.println(false);
-                    return;
-                }
-            }
-            
-            i += ones;
-        }
-        
-        System.out.println(true);
-        sc.close();
-    }
-    
-    private static int countLeadingOnes(int b) {
-        int count = 0;
-        for (int i = 7; i >= 0; i--) {
-            if ((b & (1 << i)) == 0) {
-                break;
-            }
-            count++;
-        }
-        return count;
-    }
-}
-*/
 public class Day20P2_Bits {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
@@ -124,7 +77,7 @@ public class Day20P2_Bits {
                 continue;
             }
             // if 1-4 bytes kanna ekkuva unna or only 1 or more than array length unna false
-            if(ones>4 || ones==1 || ones>a.length){
+            if(ones>4 || ones==1 || i+ones>a.length){
                 System.out.println(false);
                 return;
             }

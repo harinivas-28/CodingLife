@@ -30,10 +30,31 @@
 
 using namespace std;
 
+string l = "abcdefghijklmnopqrstuvwxyz";
+string u = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+string n = "0123456789";
 void solve() {
-    int n;
-    cin >> n;
-    
+    int a, b, c;
+    cin >> a>> b>> c;
+    int total = a+b+c;
+    int ptr = 0;
+    string res = "";
+    while(total--){
+        if(a){
+            res += l[ptr%26];
+            a--;
+        }
+        if(b){
+            res += u[ptr%26];
+            b--;
+        }
+        if(c){
+            res += n[ptr%10];
+            c--;
+        }
+        ptr++;
+    }
+    cout << res << endl;
 }
 
 int main() {
