@@ -30,70 +30,10 @@
 
 using namespace std;
 
-// Function to check if the permutation satisfies the condition
-bool check(const vector<int>& p) {
-    for (int i = 2; i <= p.size(); i++) {
-        if (max(p[i-2], p[i-1]) % i != i - 1) {
-            return false;
-        }
-    }
-    return true;
-}
-
-// DFS to search for a valid permutation
-bool dfs(int n, vector<int>& curr, vector<bool>& used, vector<int>& result) {
-    // If we've built a complete permutation
-    if (curr.size() == n) {
-        if (check(curr)) {
-            result = curr;
-            return true;
-        }
-        return false;
-    }
-    
-    // Try each number from 1 to n
-    for (int i = 1; i <= n; i++) {
-        if (!used[i]) {
-            // Early check to prune the search
-            if (curr.size() >= 1) {
-                int idx = curr.size() + 1; // 1-indexed position we're filling
-                if (idx >= 2 && max(curr.back(), i) % idx != idx - 1) {
-                    continue; // Skip this value, it can't work
-                }
-            }
-            
-            used[i] = true;
-            curr.push_back(i);
-            
-            if (dfs(n, curr, used, result)) {
-                return true;
-            }
-            
-            curr.pop_back();
-            used[i] = false;
-        }
-    }
-    
-    return false;
-}
-
 void solve() {
     int n;
     cin >> n;
     
-    vector<int> curr, result;
-    vector<bool> used(n + 1, false);
-    
-    bool found = dfs(n, curr, used, result);
-    
-    if (!found) {
-        cout << -1 << endl;
-    } else {
-        for (int x : result) {
-            cout << x << " ";
-        }
-        cout << endl;
-    }
 }
 
 int main() {
