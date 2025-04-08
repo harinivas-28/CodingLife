@@ -103,3 +103,44 @@ public class Day20P2_Bits {
         return ones;
     }
 }
+/*
+ * import java.util.*;
+public class Solution{
+    public static boolean verify(int[] a){
+        int i = 0;
+        while (i < a.length){
+            String b = String.format("%8s", Integer.toBinaryString(a[i])).replace(' ', '0');
+            int c = 0;
+            for (char ch : b.toCharArray()){
+                if (ch == '1') c++;
+                else break;
+            }
+        if (c == 0){
+            i++;
+        } 
+        else if (c >= 2 && c <= 4){
+                if (i + c > a.length) return false;
+                for (int j = 1; j < c; j++){
+                    String d = String.format("%8s", Integer.toBinaryString(a[i + j])).replace(' ', '0');
+                    if (!d.startsWith("10")) return false;
+                }
+                i += c;
+            } 
+        else return false;
+        }
+        return true;
+    }
+
+    public static void main(String[] args){
+        Scanner s = new Scanner(System.in);
+        String[] t = s.nextLine().trim().split("\\s+");
+        int[] a = new int[t.length];
+        for(int i=0; i<t.length; i++){
+            a[i] = Integer.parseInt(t[i]);
+            if(a[i]<0 || a[i]>255) return;
+        }
+        System.out.println(verify(a));
+    }
+
+}
+ */
