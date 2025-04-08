@@ -80,5 +80,6 @@ public class Day21P2_Simple {
             else res.add(y+":"+e);
         }
         System.out.println(res);
+        sc.close();
     }
 }
