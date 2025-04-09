@@ -14,10 +14,10 @@ class FlipkartSpider(scrapy.Spider):
             yield scrapy.Request(url=url, headers=headers, callback=self.parse)
 
     def parse(self, response):
-        for product in response.css('div._1AtVbE'):
-            model = product.css('div._4rR01T::text').get()
-            price = product.css('div._30jeq3::text').get()
-            
+        for product in response.css('div._1AtVbE'):  # Updated container class
+            model = product.css('div._4rR01T::text').get()  # Selector for model name
+            price = product.css('div._30jeq3._1_WHN1::text').get()  # Updated selector for price
+
             if model and price:
                 # Clean price string - remove currency symbols and commas
                 clean_price = price.replace('₹', '').replace(',', '').strip()
