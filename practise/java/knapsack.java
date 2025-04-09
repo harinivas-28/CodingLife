@@ -10,6 +10,7 @@ public class knapsack {
         int limit = sc.nextInt();
         int res = recurse(wts, vals, limit, 0, 0);
         System.out.println("Recursive: "+res);
+        sc.close();
     }
     private static int recurse(int[] wts, int[] vals, int limit, int currWt, int idx){
         if(idx>=wts.length) return currWt;

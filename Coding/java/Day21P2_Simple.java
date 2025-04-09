@@ -52,6 +52,7 @@ Sample Output-2:
 public class Day21P2_Simple {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
+        @SuppressWarnings("unused")
         int k = sc.nextInt(), s=sc.nextInt(), e=sc.nextInt();
         sc.nextLine();
         int[] nums = Arrays.stream(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
