@@ -1,4 +1,0 @@
-scrapy
-pymongo
-celery
-flask
