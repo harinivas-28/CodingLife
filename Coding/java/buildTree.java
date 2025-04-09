@@ -23,6 +23,19 @@ public class BuildTree {
         }
         return root;
     }
+    public static List<Integer> levelOrder(TreeNode root){
+        List<Integer> res = new  ArrayList<>();
+        if(root==null) return res;
+        Queue<TreeNode> q = new LinkedList<>();
+        q.offer(root);
+        while(!q.isEmpty()){
+            TreeNode curr = q.poll();
+            res.add(curr.val);
+            if(curr.left!=null) q.offer(curr.left);
+            if(curr.right!=null) q.offer(curr.right);
+        }
+        return res;
+    }
     public static int height(TreeNode root, int s){
         return getHt(root, s, 0);
     }

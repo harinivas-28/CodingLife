@@ -44,63 +44,22 @@ Reverse updates:
 
 */
 public class Day20P2_Trees {
-    // Build BST from level order input
-    public static TreeNode buildTree(int[] arr){
-        if(arr.length == 0 || arr[0] == -1) return null;
-        TreeNode root = new TreeNode(arr[0]);
-        Queue<TreeNode> q = new LinkedList<>();
-        q.offer(root);
-        int i = 1;
-        while(!q.isEmpty() && i < arr.length){
-            TreeNode curr = q.poll();
-            if(i < arr.length && arr[i] != -1){
-                curr.left = new TreeNode(arr[i]);
-                q.offer(curr.left);
-            }
-            i++;
-            if(i < arr.length && arr[i] != -1){
-                curr.right = new TreeNode(arr[i]);
-                q.offer(curr.right);
-            }
-            i++;
-        }
+    private static int max = 0;
+    private static TreeNode bstToGst(TreeNode root){
+        if(root==null) return null;
+        bstToGst(root.right);
+        root.val += max;
+        max = root.val;
+        bstToGst(root.left);
         return root;
     }
-
-    // Global sum for reverse in-order traversal
-    static int sum = 0;
-
-    // Reverse in-order DFS to transform to Greater Tree
-    private static TreeNode dfs(TreeNode root){
-        if(root == null) return null;
-
-        dfs(root.right);
-        sum += root.val;
-        root.val = sum;
-        dfs(root.left);
-
-        return root;
-    }
-
-    // Print the tree in level order
-    public static void levelOrder(TreeNode root){
-        if(root == null) return;
-        Queue<TreeNode> q = new LinkedList<>();
-        q.offer(root);
-        while(!q.isEmpty()){
-            TreeNode curr = q.poll();
-            System.out.print(curr.val + " ");
-            if(curr.left != null) q.offer(curr.left);
-            if(curr.right != null) q.offer(curr.right);
-        }
-    }
-
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
-        int[] arr = Arrays.stream(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-        TreeNode root = buildTree(arr);
-        TreeNode res = dfs(root);
-        levelOrder(res);
+        int[] arr = ArrayUtils.parseIntArray(sc.nextLine());
+        TreeNode root = BuildTree.build(arr);
+        TreeNode res = bstToGst(root);
+        List<Integer> lo = BuildTree.levelOrder(res);
+        System.out.println(lo);
         sc.close();
     }
 }
