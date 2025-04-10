@@ -107,6 +107,7 @@ public class Day21P3_Strings {
         String s = sc.next();
         String res = F(s);
         String res2 = slideWin(s);
+        String res3 = longestNiceSubstring(s);
         String ans="";
         for(int i=0;i<s.length();i++){
             for(int j=i;j<s.length();j++){
@@ -118,7 +119,24 @@ public class Day21P3_Strings {
         }
         System.out.print(ans);
         System.out.println(res+" "+res2);
+        System.out.println(res3);
         sc.close();
+    }
+    public static String longestNiceSubstring(String s) {
+        if(s.length()<2) return "";
+
+        for(int i=0;i<s.length();i++){
+            char c = s.charAt(i);
+            char l = Character.toLowerCase(c);
+            char u = Character.toUpperCase(c);
+            if(s.indexOf(l)!=-1 && s.indexOf(u)!=-1){
+                continue;
+            }
+            String left = longestNiceSubstring(s.substring(0, i));
+            String right = longestNiceSubstring(s.substring(i+1));
+            return left.length()>=right.length() ? left : right;
+        }
+        return s;
     }
     static String slideWin(String s){
         int maxLen = 0;
