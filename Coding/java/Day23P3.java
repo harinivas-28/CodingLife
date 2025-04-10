@@ -42,6 +42,7 @@ public class Day23P3 {
         int a = sc.nextInt();
         int b = sc.nextInt();
         sc.close();
+        // BRUTE FORCE
         List<Integer> res = new ArrayList<>();
         for(int i=a;i<=b;i++){
             int temp = i;
@@ -64,38 +65,56 @@ public class Day23P3 {
         System.out.println(res);
         List<Integer> t = F(a, b);
         System.out.println(t);
+        // optimized
+        List<Integer> res2 = optimized(a, b);
+        System.out.println(res2);
+    }
+    private static List<Integer> optimized(int a, int b){
+        List<Integer> res = new ArrayList<>();
+        for(int i=1;i<=9;i++){
+            int num = i;
+            int next = i;
+            while(next<9){
+                next++;
+                num = num*10 + next;
+                if(num>b) break;
+                if(num>=a) res.add(num);
+            }
+        }
+        return res;
     }
     private static List<Integer> F(int a, int b){
-        int st = 0;
-        boolean flag = true;
-        for(int i=a;i<=b;i++){
-            int temp = i;
-            int prev = temp%10;
-            i/=10;
-            while(temp>0){
-                int rem = i%10;
-                if(rem>prev || rem!=prev-1){
-                    flag = false;
-                    break;
-                }
-                prev = rem;
-                temp/=10;
+        int st = a, end = b;
+        String h = "0123456789";
+        boolean f = true;
+        int min_length = 0;
+        while(f){
+            if(h.indexOf(String.valueOf(a))!=-1){
+                f = false;
+                min_length = noOfDigits(a);
             }
-            if(flag){
-                st = i;
-                break;
-            }
+            a++;
         }
-        String val = "1";
-        int noOfDig = st==0 ? 1 : (int)Math.log10(st) + 1;
-        val = val.repeat(noOfDig);
+        int max_length = 0;
+        while(!f){
+            if(h.indexOf(String.valueOf(b))!=-1){
+                f = true;
+                max_length = noOfDigits(b);
+            }
+            b--;
+        }
         List<Integer> res = new ArrayList<>();
-        for(int i=st;i<=b;i+=Integer.parseInt(val)){
-            int t = (int)Math.log10(st)+1;
-            if(t>noOfDig) val+='1';
-            res.add(i);
+        for(int i=min_length;i<=max_length;i++){
+            for(int j=0;j<=h.length()-i;j++){
+                int val = Integer.parseInt(h.substring(j, j+i));
+                if(val>=st && val<=end){
+                    res.add(val);
+                }
+            }
         }
-        // System.out.println(res);
         return res;
+    }
+    private static int noOfDigits(int n){
+        return n==0 ? 1 : (int)Math.log10(n)+1;
     }
 }
