@@ -52,12 +52,19 @@ public class Day24P5 {
             System.out.println(false);
             return;
         }
-        Map map = new HashMap();
-        for(Integer i=0;i<l.length;i++){
-            if(map.put(s.charAt(i), i)!=map.put(l[i], i)){
-                System.out.println(false);
-                return;
+        Map<Character, String> map1 = new HashMap<>();
+        Map<String, Character> map2 = new HashMap<>();
+        for(int i=0;i<s.length();i++){
+            char c = s.charAt(i);
+            String curr = l[i];
+            if(map1.containsKey(c)){
+                if(!map1.get(c).equals(curr) || map2.get(curr)!=c){
+                    System.out.println(false);
+                    return;
+                }
             }
+            map1.put(c, curr);
+            map2.put(curr, c);
         }
         System.out.println(true);
     }
