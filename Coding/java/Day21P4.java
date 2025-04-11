@@ -59,6 +59,8 @@ public class Day21P4 {
         // sc.nextLine();
         int days = sc.nextInt();
         sc.close();
+        int[] res = prisonAfterNDays(a, days);
+        System.out.println("OPTIMIZED VERSION: "+Arrays.toString(res));
         List<String> seen = new ArrayList<>();
         String curr = Arrays.toString(a);
         seen.add(curr);
@@ -74,13 +76,24 @@ public class Day21P4 {
                 int ln = seen.size()-idx;
                 days = (days-1)%ln;
                 if(days==0) break;
-                String res = seen.get(idx+days);
-                System.out.println(res);
+                String r = seen.get(idx+days);
+                System.out.println(r);
                 return;
             }
             seen.add(curr);
             days--;
         }
         System.out.println(Arrays.toString(a));
+    }
+    public static int[] prisonAfterNDays(int[] cells, int n) {
+        n = (n-1)%14+1;
+        for(int i=0;i<n;i++){
+            int[] t = new int[8];
+            for(int j=1;j<7;j++){
+                t[j] = cells[j-1]==cells[j+1] ? 1 : 0;
+            }
+            cells = t;
+        }
+        return cells;
     }
 }
