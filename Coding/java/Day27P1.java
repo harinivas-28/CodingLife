@@ -59,31 +59,37 @@ public class Day27P1 {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         sc.close();
-        Set<Long> set = new LinkedHashSet<>();
+        Set<Integer> set = new LinkedHashSet<>();
+        StringBuilder sb = new StringBuilder("0".repeat(n));
+        solve(sb, set);
+        System.out.println(set);
+
+        set.clear();
         BitSet bs = new BitSet();
         solve(bs, set, n);
         System.out.println(set);
     }
 
-    private static long toInt(BitSet bs, int n) {
-        long value = 0;
+    private static int toInt(BitSet bs, int n) {
+        int val = 0;
         for (int i = 0; i < n; i++) {
             if (bs.get(i)) {
-                value |= (1L << i);
+                // val += Math.pow(2, i);
+                val += (1<<i);
             }
         }
-        return value;
+        return val;
     }
 
-    private static void solve(BitSet bs, Set<Long> set, int n) {
-        long num = toInt(bs, n);
+    private static void solve(BitSet bs, Set<Integer> set, int n) {
+        int num = toInt(bs, n);
         if (set.contains(num)) return;
         set.add(num);
         
         for (int i = 0; i < n; i++) {
             BitSet nextBs = (BitSet) bs.clone();
             nextBs.flip(i);
-            long nextNum = toInt(nextBs, n);
+            int nextNum = toInt(nextBs, n);
             if (!set.contains(nextNum)) {
                 solve(nextBs, set, n);
             }
