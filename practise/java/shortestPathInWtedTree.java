@@ -62,24 +62,64 @@ Query [2,3]: The shortest path from root node 1 to node 3 consists of edges (1,2
 
 Constraints:
 
-1 <= n <= 105
+1 <= n <= 10^5
 edges.length == n - 1
 edges[i] == [ui, vi, wi]
 1 <= ui, vi <= n
 1 <= wi <= 104
 The input is generated such that edges represents a valid tree.
-1 <= queries.length == q <= 105
+1 <= queries.length == q <= 10^5
 queries[i].length == 2 or 4
 queries[i] == [1, u, v, w'] or,
 queries[i] == [2, x]
 1 <= u, v, x <= n
 (u, v) is always an edge from edges.
-1 <= w' <= 104
+1 <= w' <= 10^4
  */
 public class shortestPathInWtedTree {
     public static void main(String[] args){
         int n = 4;
         int[][] edges = {{1,2,2},{2,3,1},{3,4,5}};
         int[][] queries = {{2,4},{2,3},{1,2,3,3},{2,2},{2,3}};
+        int[][] adj = new int[n+1][n+1];
+        int[] ans = new int[queries.length];
+        for(int[] edge: edges){
+            adj[edge[0]][edge[1]] = edge[2];
+            adj[edge[1]][edge[0]] = edge[2];
+        }
+        int i = 0;
+        for(int[] q: queries){
+            if(q[0]==1){
+                adj[q[1]][q[2]] = q[3];
+            } else {
+                int[] dist = djk(n, adj, 1);
+                ans[i] = dist[q[1]];
+                i++;
+            }
+        }
+        System.out.println(Arrays.toString(ans));
+    }
+    private static int[] djk(int n, int[][] adj, int source) {
+        int[] dist = new int[n+1];
+        Arrays.fill(dist, Integer.MAX_VALUE);
+        dist[source] = 0;
+        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> (a[1] - b[1]));
+        pq.offer(new int[]{source, 0});
+        while (!pq.isEmpty()) {
+            int[] curr = pq.poll();
+            int v = curr[0];
+            int d = curr[1];
+            if (d > dist[v]) continue;
+            for (int u = 1; u <= n; u++) {
+                if (adj[v][u] > 0) { 
+                    int newDist = dist[v] + adj[v][u];
+                    if (newDist < dist[u]) {
+                        dist[u] = newDist;
+                        pq.offer(new int[]{u, newDist});
+                    }
+                }
+            }
+        }
+        return dist;
     }
 }

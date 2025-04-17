@@ -1,7 +1,6 @@
 package Coding.java;
 import java.util.*;
 
-import practise.java.temp;
 /*
 Given two strings S1 and S2, find if S2 can match S1 or not.
 
