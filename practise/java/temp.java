@@ -1,12 +1,15 @@
 package practise.java;
 public class temp {
     public static void main(String[] args) {
-        Trie trie = new Trie();
-        trie.insert("apple");
-        trie.insert("app");
-        trie.insert("bat");
-        trie.insert("bad");
-        System.out.println("Words in Trie:");
-        trie.printTrie();
+        int n = 5;
+        int num = 1;
+        for(int i=n;i>0;i--){
+            int temp = n-i;
+            for(int j=0;j<num;j++){
+                System.out.print((num+temp)+" ");
+            }
+            num++;
+            System.out.println();
+        }
     }
 }
