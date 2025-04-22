@@ -56,55 +56,59 @@ public class Day27P2 {
         Scanner sc = new Scanner(System.in);
         String s = sc.next();
         sc.close();
-        
-    }
-}
-/*
- *  public static void main(String[] arg{
-        Scanner sc= new Scanner(System.in);
-        String s= sc.nextLine();
-        List<List<String>> sets = new ArrayList<>();
-        int i = 0;
-        while (i < s.length()) {
-            if (s.charAt(i) == '[') {
-                i++; 
-                StringBuilder sb = new StringBuilder();
-                List<String> set= new ArrayList();
-                while (s.charAt(i) != ']') {
-                    if (s.charAt(i) == ',') {
-                         set.add(sb.toString());
-                         sb.setLength(0);
-                    }
-                    else {
-                        sb.append(s.charAt(i));
-                    }
-                    i++;
-                }
-                set.add(sb.toString());
-                sets.add(set);
-                i++;
-            }
-             else {
-                StringBuilder sb = new StringBuilder();
-                List<String>set= new ArrayList();
-                sb.append(s.charAt(i));
-                set.add(sb.toString());
-                sets.add(set);
-                i++;
-            }
-        }
-        List<String> res= new ArrayList();
-        backtrack(0,sets,"",res);
-        Collections.sort(res); // Lex Order
+        List<List<String>> sets = parse(s);
+        // System.out.println(sets);
+        List<String> res = new ArrayList<>();
+        backtrack(0, sets, res, new StringBuilder());
         System.out.println(res);
     }
-    public static  void backtrack(int index,List<List<String>>list, String cur, List<String> res) {
-        if(index==list.size()) {
-           res.add(cur);
-           return;
+    private static void backtrack(int idx, List<List<String>> sets, List<String> res, StringBuilder sb){
+        if(idx>=sets.size()){
+            res.add(sb.toString());
+            return;
         }
-        for(String s: list.get(index)) {
-            backtrack(index+1,list,cur+s,res);
+        for(String s: sets.get(idx)){
+            sb.append(s);
+            backtrack(idx+1, sets, res, sb);
+            sb.setLength(sb.length()-s.length());
         }
     }
- */
+    private static List<List<String>> parse(String s){
+        return new AbstractList<List<String>>() {
+            List<List<String>> sets = null;
+            private void build(){
+                if(sets!=null) return;
+                sets = new ArrayList<>();
+                int i = 0;
+                while(i<s.length()){
+                    if(s.charAt(i)=='['){
+                        int st = i+1;
+                        while(s.charAt(i)!=']') i++;
+                        String[] temp = s.substring(st, i).split(",");
+                        List<String> t = new ArrayList<>();
+                        for(String x: temp) t.add(x);
+                        sets.add(t);
+                        i++;
+                    } else {
+                        int st = i;
+                        while(i<s.length() && s.charAt(i)!='[') i++;
+                        List<String> t = new ArrayList<>();
+                        t.add(s.substring(st, i));
+                        sets.add(t);
+                    }
+                }
+                // System.out.println(sets);
+            }
+            @Override
+            public int size() {
+                build();
+                return sets.size();
+            }
+            @Override
+            public List<String> get(int index) {
+                build();
+                return sets.get(index);
+            }
+        };
+    }
+}
