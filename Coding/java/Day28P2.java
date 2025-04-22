@@ -1,5 +1,6 @@
 package Coding.java;
 import java.util.*;
+
 /*
  * /*
 Vihaar is working with strings. 
@@ -61,21 +62,93 @@ Sample Output-2:
  the relatively smallest string of T is "aaogoog"
  */
 public class Day28P2 {
+    static class DSU {
+        int[] parent, rank;
+        public DSU(int n){
+            parent = new int[n];
+            rank = new int[n];
+            for(int i=0;i<n;i++){
+                parent[i] = i;
+                rank[i] = 1;
+            }
+        }
+        public int find(int x){
+            if(parent[x]!=x)
+                parent[x] = find(parent[x]);
+            return parent[x];
+        }
+        public void union(int x, int y){
+            int rx = find(x), ry = find(y);
+            if(rx!=ry){
+                if(rank[rx]>rank[ry]){
+                    parent[ry] = rx;
+                    rank[rx] += rank[ry];
+                } else {
+                    parent[rx] = ry;
+                    rank[ry] += rank[rx];
+                }
+            }
+        }
+        public String toString(){
+            return Arrays.toString(parent)+"\n"+Arrays.toString(rank);
+        }
+    }
+    private static DSU getRel(String a, String b){
+        DSU dsu = new DSU(26);
+        for(int i=0;i<a.length();i++){
+            int c1 = a.charAt(i)-'a', c2 = b.charAt(i)-'a';
+            if(c1<c2) dsu.union(c2, c1); 
+            else dsu.union(c1, c2);
+        }
+        System.out.println(dsu.toString());
+        return dsu;
+    }
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         String[] arr = sc.nextLine().split(" ");
-        String a = arr[0], b = arr[1];
-        Map<Character, Set<Character>> map = new HashMap<>();
-        for(int i=0;i<a.length();i++){
-            char c1 = a.charAt(i), c2 = b.charAt(i);
-            map.putIfAbsent(c1, new LinkedHashSet<>());
-            map.putIfAbsent(c2, new LinkedHashSet<>());
-            map.get(c1).add(c1);
-            map.get(c1).add(c2);
-            map.get(c2).add(c1);
-            map.get(c2).add(c2);
+        String a = arr[0], b = arr[1],  tar = arr[2];
+        DSU dsu = getRel(a, b);
+        StringBuilder res = new StringBuilder();
+        for(char c: tar.toCharArray()){
+            char t = (char)(dsu.find(c-'a')+'a');
+            res.append(t);
         }
-        System.out.println(map);
+        System.out.println(res.toString());
         sc.close();
     }
 }
+/*
+ * private static Set<Integer> fun(int n){
+        return new AbstractSet<>() {
+            Set<Integer> res = null;
+            private void build(){
+                if(res!=null) return;
+                res = new HashSet<>();
+                for(int i=0;i<n;i++){
+                    res.add(i);
+                }
+            }
+            @Override
+            public int size() {
+                build();
+                return res.size();
+            }
+            @Override
+            public Iterator<Integer> iterator() {
+                build();
+                return new Iterator<>() {
+                    int idx = 0;
+                    @Override
+                    public boolean hasNext() {
+                        if(idx<res.size()) return true;
+                        return false;
+                    }
+                    @Override
+                    public Integer next() {
+                        return idx++;
+                    }
+                };
+            }
+        };
+    }
+ */
