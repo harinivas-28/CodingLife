@@ -56,7 +56,7 @@ public class Day27P2 {
         Scanner sc = new Scanner(System.in);
         String s = sc.next();
         sc.close();
-
+        
     }
 }
 /*
