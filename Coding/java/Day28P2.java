@@ -63,13 +63,11 @@ Sample Output-2:
  */
 public class Day28P2 {
     static class DSU {
-        int[] parent, rank;
+        int[] parent;
         public DSU(int n){
             parent = new int[n];
-            rank = new int[n];
             for(int i=0;i<n;i++){
                 parent[i] = i;
-                rank[i] = 1;
             }
         }
         public int find(int x){
@@ -80,34 +78,26 @@ public class Day28P2 {
         public void union(int x, int y){
             int rx = find(x), ry = find(y);
             if(rx!=ry){
-                if(rank[rx]>rank[ry]){
-                    parent[ry] = rx;
-                    rank[rx] += rank[ry];
-                } else {
-                    parent[rx] = ry;
-                    rank[ry] += rank[rx];
-                }
+                if(rx<ry) parent[ry] = rx;
+                else parent[rx] = ry;
             }
         }
         public String toString(){
-            return Arrays.toString(parent)+"\n"+Arrays.toString(rank);
+            return Arrays.toString(parent);
         }
-    }
-    private static DSU getRel(String a, String b){
-        DSU dsu = new DSU(26);
-        for(int i=0;i<a.length();i++){
-            int c1 = a.charAt(i)-'a', c2 = b.charAt(i)-'a';
-            if(c1<c2) dsu.union(c2, c1); 
-            else dsu.union(c1, c2);
-        }
-        System.out.println(dsu.toString());
-        return dsu;
     }
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         String[] arr = sc.nextLine().split(" ");
         String a = arr[0], b = arr[1],  tar = arr[2];
-        DSU dsu = getRel(a, b);
+
+        DSU dsu = new DSU(26);
+        for(int i=0;i<a.length();i++){
+            int c1 = a.charAt(i)-'a', c2 = b.charAt(i)-'a';
+            dsu.union(c1, c2);
+        }
+        System.out.println(dsu.toString());
+        
         StringBuilder res = new StringBuilder();
         for(char c: tar.toCharArray()){
             char t = (char)(dsu.find(c-'a')+'a');
