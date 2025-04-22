@@ -48,66 +48,63 @@ Sample Output:
 public class Day28P3 {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
-        int n = Integer.parseInt(sc.nextLine());
-        int[] from = Arrays.stream(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-        int[] to = Arrays.stream(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-        int[] wt = Arrays.stream(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-        int div = Integer.parseInt(sc.nextLine());
+        int n = sc.nextInt();
+        List<Integer> from = new ArrayList<>();
+        List<Integer> to = new ArrayList<>();
+        List<Integer> wt = new ArrayList<>();
+        for(int i=0;i<n-1;i++){
+            int u = sc.nextInt(), v = sc.nextInt(), w = sc.nextInt();
+            from.add(u);
+            to.add(v);
+            wt.add(w);
+        }
+        int div = sc.nextInt();
         sc.close();
-
         List<Integer> res = solve(n, from, to, wt, div);
-        for (int val : res) System.out.print(val + " ");
+        System.out.println(res);
     }
-
-    private static List<Integer> solve(int n, int[] from, int[] to, int[] wt, int div){
+    private static List<Integer> solve(int n, List<Integer> from, List<Integer> to, List<Integer> wt, int div){
         return new AbstractList<Integer>() {
             List<Integer> res = null;
             private void build(){
                 if(res!=null) return;
                 res = new ArrayList<>();
-                Map<Integer, List<int[]>> graph = new HashMap<>();
-                for(int i = 0; i < n - 1; i++) {
-                    graph.putIfAbsent(from[i]-1, new ArrayList<>());
-                    graph.putIfAbsent(to[i]-1, new ArrayList<>());
-                    graph.get(from[i]-1).add(new int[]{to[i] - 1, wt[i]});
-                    graph.get(to[i]-1).add(new int[]{from[i] - 1, wt[i]});
+                int[][] adj = new int[n+1][n+1];
+                for(int[] a: adj) Arrays.fill(a, Integer.MAX_VALUE);
+                for(int i=1;i<=n;i++) adj[i][i] = 0;
+                for(int i=0;i<from.size();i++){ 
+                    int u = from.get(i), v = to.get(i), w = wt.get(i);
+                    adj[u][v] = w;
+                    adj[v][u] = w;
                 }
-                for(int k = 0; k < n; k++) {
-                    int[] dist = new int[n];
-                    Arrays.fill(dist, -1);
-                    dfs(k, -1, 0, dist, graph);
+                // Floyd Warshall
+                for(int k=1;k<=n;k++){
+                    for(int i=1;i<=n;i++){
+                        for(int j=1;j<=n;j++){
+                            if(adj[i][k]!=Integer.MAX_VALUE && adj[k][j]!=Integer.MAX_VALUE)
+                                adj[i][j] = Math.min(adj[i][j], adj[i][k]+adj[k][j]);
+                        }
+                    }
+                }
+                for(int i=1;i<=n;i++){
                     int cnt = 0;
-                    for(int i = 0; i < n; i++) {
-                        for(int j = i + 1; j < n; j++) {
-                            if(i != k && j != k) {
-                                int val = dist[i] + dist[j];
-                                if(val % div == 0) {
-                                    cnt++;
-                                }
-                            }
+                    for(int j=1;j<=n;j++){
+                        if(adj[i][j]!=0 && adj[i][j]%div==0){
+                            cnt++;
                         }
                     }
                     res.add(cnt);
                 }
             }
             @Override
-            public Integer get(int i){
-                build();
-                return res.get(i);
-            }
-            @Override
-            public int size(){
+            public int size() {
                 build();
                 return res.size();
             }
-            private void dfs(int node, int parent, int currDist, int[] dist, Map<Integer, List<int[]>> graph) {
-                dist[node] = currDist;
-                List<int[]> temp = graph.get(node);
-                for(int[] nb : temp) {
-                    if(nb[0] != parent) {
-                        dfs(nb[0], node, currDist + nb[1], dist, graph);
-                    }
-                }
+            @Override
+            public Integer get(int index) {
+                build();
+                return res.get(index);
             }
         };
     }

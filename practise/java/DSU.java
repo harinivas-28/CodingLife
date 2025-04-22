@@ -16,14 +16,14 @@ public class DSU {
         return parent[x];
     }
     public void union(int x, int y){
-        int rootX = find(x), rootY = y;
+        int rootX = find(x), rootY = find(y);
         if(rootX!=rootY){
             if(rank[rootX]>rank[rootY]){
-                parent[rootX] = rootY;
+                parent[rootY] = rootX;
                 rank[rootX] += rank[rootY];
             } else {
-                parent[rootY] = rootX;
-                rank[rootY] += parent[rootX];
+                parent[rootX] = rootY;
+                rank[rootY] += rank[rootX];
             }
         }
     }
