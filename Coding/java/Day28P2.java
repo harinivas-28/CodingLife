@@ -126,6 +126,7 @@ public class Day28P2 {
             @Override
             public Iterator<Integer> iterator() {
                 build();
+		// return res.iterator();
                 return new Iterator<>() {
                     int idx = 0;
                     @Override
