@@ -34,19 +34,22 @@ void solve() {
     int n;
     string s;
     cin >> n >> s;
-    vector<int> res(n-1);
-    int num = 1;
-    for(int i=s.size()-1;i>=0;i--){
-        if(s[i]=='<') res[i] = num++;
+    if(n==1){
+        cout << (s[0]=='0') ? 1:0;
+        cout << nl;
+        return;
     }
-    for(int i=s.size()-1;i>=0;i--){
-        if(s[i]=='>') res[i] = n--;
+    int res = 0;
+    int cnt = 0;
+    for(char c: s) if(c=='1') cnt++;
+    for(char c: s){
+        if(c=='1'){
+            res += (cnt-1);
+        } else {
+            res += (cnt+1);
+        }
     }
-    cout << n << " ";
-    for(auto& x: res){
-        cout << x << " ";
-    }
-    cout << nl;
+    cout << res << nl;
 }
 
 int main() {
