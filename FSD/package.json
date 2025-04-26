@@ -10,8 +10,10 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.21.2",
     "mongoose": "^8.13.0",
+    "mysql2": "^3.14.0",
     "ws": "^8.18.1"
   }
 }
