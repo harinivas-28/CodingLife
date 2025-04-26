@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Database API UI</title>
+    </head>
+    <body>
+        <h1>Database API User Interface</h1>
+        <textarea id="queryBox" rows="10" cols="80" placeholder="Enter your SQL query here..."></textarea><br>
+        <button onclick="execQuery()">Execute</button>
+        <pre id="output"></pre>
+    </body>
+    <script>
+        async function execQuery(){
+            const query = document.getElementById('queryBox').value;
+            const response = await fetch('http://localhost:3000/query',{
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({query})
+            });
+            const data = await response.json();
+            document.getElementById('output').textContent = JSON.stringify(data, null, 2);
+        }
+    </script>
+</html>
