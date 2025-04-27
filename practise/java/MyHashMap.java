@@ -97,6 +97,9 @@ public class MyHashMap<K, V> {
             return node.value;
         }
     }
+    public int size(){
+        return n;
+    }
     public boolean isEmpty(){
         return n==0;
     }
