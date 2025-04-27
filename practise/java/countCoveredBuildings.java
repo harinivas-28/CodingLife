@@ -1,4 +1,7 @@
 package practise.java;
+
+import java.util.*;
+
 /*
  * Q1. Count Covered Buildings
 Medium
@@ -65,5 +68,32 @@ buildings[i] = [x, y]
 All coordinates of buildings are unique.
  */
 public class countCoveredBuildings {
-    
+    public static void main(String[] args){
+        int n = 3;
+        int[][] buildings = {{1, 2}, {2, 2}, {3, 2}, {2, 1}, {2, 3}};
+        int res = solve(n, buildings);
+        System.out.println(res);
+    }
+    private static int solve(int n, int[][] buildings){
+        Map<Integer, List<Integer>> rows = new HashMap<>();
+        Map<Integer, List<Integer>> cols = new HashMap<>();
+        for(int[] b: buildings){
+            rows.computeIfAbsent(b[0], k -> new ArrayList<>()).add(b[1]);
+            cols.computeIfAbsent(b[1], k -> new ArrayList<>()).add(b[0]);
+        }
+        for(List<Integer> l: rows.values()) Collections.sort(l);
+        for(List<Integer> l: cols.values()) Collections.sort(l);
+        int res = 0;
+        for(int[] b: buildings){
+            int a = b[0], c = b[1];
+            List<Integer> ll = rows.get(a);
+            int idxR = ll.indexOf(c);
+            if(idxR==0 || idxR==ll.size()-1) continue;
+            List<Integer> l = cols.get(c);
+            int idxC = l.indexOf(a);
+            if(idxC==0 || idxC==l.size()-1) continue;
+            res++;
+        }
+        return res;
+    }
 }
