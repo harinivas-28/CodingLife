@@ -61,8 +61,8 @@ Thus, the count of covered buildings is 1.
 
 Constraints:
 
-2 <= n <= 105
-1 <= buildings.length <= 105 
+2 <= n <= 10^5
+1 <= buildings.length <= 10^5 
 buildings[i] = [x, y]
 1 <= x, y <= n
 All coordinates of buildings are unique.
