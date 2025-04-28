@@ -53,7 +53,7 @@ public class Day32P3 {
             return;
         }
         for(int k=2;k<n;k++){
-            if(currP*k<=n){
+            if(n%currP==0 && currP*k<=n){
                 t.add(k);
                 dfs(k, n, currP*k, t);
                 t.remove(t.size()-1);
