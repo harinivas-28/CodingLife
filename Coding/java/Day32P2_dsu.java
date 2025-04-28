@@ -68,7 +68,7 @@ Sample Output-3:
 -1
  */
 
-public class Day32P2 {
+public class Day32P2_dsu {
     static class DSU {
         int[] p;
         DSU(int n){

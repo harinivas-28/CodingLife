@@ -35,7 +35,7 @@ Constraints:
 - Only shards with energy between 2 and n - 1 can be used.
 
  */
-public class Day32P3 {
+public class Day32P3_Bt {
     static Set<List<Integer>> res;
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
