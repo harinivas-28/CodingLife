@@ -30,26 +30,34 @@
 
 using namespace std;
 
+string getKey(int x) {
+    int t = x;
+    int freq[10] = {0};
+    // count digits of x
+    while (x > 0) {
+        freq[x % 10]++;
+        x /= 10;
+    }
+    x = t+1;
+    while (x > 0) {
+        freq[x % 10]++;
+        x /= 10;
+    }
+    string key = "";
+    FOR(i, 0, 9){
+        key += string(freq[i], '0' + i);
+    }
+    return key;
+}
 void solve() {
     int n;
-    string s;
-    cin >> n >> s;
-    if(n==1){
-        cout << (s[0]=='0') ? 1:0;
-        cout << nl;
-        return;
+    cin >> n;
+    set<string> set;
+    FOR(i, 1, n){
+        string s = getKey(i);
+        set.insert(s);
     }
-    int res = 0;
-    int cnt = 0;
-    for(char c: s) if(c=='1') cnt++;
-    for(char c: s){
-        if(c=='1'){
-            res += (cnt-1);
-        } else {
-            res += (cnt+1);
-        }
-    }
-    cout << res << nl;
+    cout << set.size() << nl;
 }
 
 int main() {
@@ -57,7 +65,7 @@ int main() {
     // freopen("input.txt", "r", stdin);
     // freopen("output.txt", "w", stdout);
     
-    int t;
+    ll t;
     cin >> t;
     while (t--) {
         solve();
