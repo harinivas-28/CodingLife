@@ -9,3 +9,26 @@ TOTAL_SALES
 12762668
 
 -->
+select sum(sales_amount) total_sales from sales_data
+where product_category = 'Electronics' and
+region = 'North' and startswith(sale_date, '2021');
+
+<!--
+Note:Work on same worksheet which is created for micropartition-query1. The 
+worksheet name is should be micropartition. Don't create new worksheet
+
+Write a SQL query to count the number of sales records (sales_count) for 
+each region where sales occurred in January 2020. Your results should be
+grouped by region and sorted alphabetically by region.
+
+Sample Output:
+REGION	SALES_COUNT
+Central	8562
+East	8516
+North	8438
+South	8567
+West	8534
+
+-->
+select region, count(*) sales_count from sales_data
+where startswith(sale_date, '2020-01') group by region;
