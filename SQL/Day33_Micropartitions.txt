@@ -1,0 +1,11 @@
+<!--
+Note:Create a Worksheet with the name micropartition
+
+Write a SQL query to calculate the sum of sales (as total_sales) for all 
+'Electronics' products sold in the 'North' region during the year 2021.
+
+Sample Output: 
+TOTAL_SALES
+12762668
+
+-->
