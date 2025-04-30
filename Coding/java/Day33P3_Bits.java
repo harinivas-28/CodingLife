@@ -35,7 +35,7 @@ Comparing 13 (1101) and 3 (0011) gives 3 differences.
 Total differences = 1 + 2 + 3 = 6.
 
  */
-public class Day33P3 {
+public class Day33P3_Bits {
      public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         int[] arr = Arrays.stream(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();

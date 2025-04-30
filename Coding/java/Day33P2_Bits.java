@@ -38,7 +38,7 @@ Sample Output-2:
 ----------------
 0 1 1 2 1 2 2
  */
-public class Day33P2 {
+public class Day33P2_Bits {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         int d = sc.nextInt();
