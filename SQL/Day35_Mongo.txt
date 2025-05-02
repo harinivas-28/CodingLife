@@ -1,0 +1,106 @@
+/*
+
+Collection: 'employees'
+
+Reference Document:
+----------------------
+{
+  "employeeId": "E001",
+  "name": "Aarav Sharma",
+  "age": 28,
+  "gender": "Male",
+  "email": "aarav.sharma@example.com",
+  "department": "Engineering",
+  "salary": 720000,
+  "isPermanent": true,
+  "joiningDate": {
+    "$date": "2019-06-15T00:00:00.000Z"
+  },
+  "skills": [
+    "JavaScript",
+    "Node.js",
+    "MongoDB"
+  ],
+  "address": {
+    "street": "12 MG Road",
+    "city": "Bangalore",
+    "state": "Karnataka",
+    "pinCode": 560001
+  }
+}
+
+
+Sample Output:
+--------------
+[
+  { name: 'Aarav Sharma', age: 28, gender: 'Male' },
+  { name: 'Neha Reddy', age: 29, gender: 'Female' }
+]
+
+
+Query Reference:
+-------------------
+printjson() : JS library function to display the JSON Object data.
+In db.<collection>.find():
+	db -> Refers to the database.
+	<collection> -> Your collection name
+	find() -> Method to write the selection and projection part of the query.
+
+*/
+
+1 -> Write a MongoDB query to find all employees who belong to the 'Engineering' 
+department
+
+printjson(
+	db.employees.find({department:"Engineering"},{_id:0, name:1, age:1, gender:1})
+)
+
+2 -> Write a MongoDB query to retrieve all employees whose salary is more than INR 700000.
+printjson(
+	db.employees.find({salary:{$gt:700000}},{_id:0, name:1, salary:1})
+)
+
+3 -> Write a MongoDB query to find employees whose age is between 28 and 35 (inclusive)
+printjson(
+	db.employees.find({age:{$gt:27,$lt:36}},{_id:0, name:1, age:1})
+)
+
+4 -> Write a MongoDB query to find employees who joined after January 1st, 2021.
+printjson(
+	db.employees.find({joiningDate:{$gt:ISODate('2021-01-01T23:59:59.999Z')}}, {_id:0, name:1, age:1, joiningDate: 1})
+)
+
+5 -> Write a MongoDB query to find employees who have more than two skills listed.
+printjson(
+	db.employees.find({$where:"this.skills.length>2"},{_id:0, name:1, skills:1})
+)
+
+6 -> Write a MongoDB query to find male employees who work in either the Sales or Finance department.
+printjson(
+	db.employees.find({gender:'Male', department:{$in:['Sales', 'Finance']}},{_id:0, name:1, gender:1, department:1})
+)
+
+7 -> Write a MongoDB query to find employees who have both "UI/UX" and "Figma" in 
+their skillset.
+printjson(
+	db.employees.find({skills:{$all:["UI/UX", "Figma"]}},{_id:0, name:1, skills:1})
+)
+
+8 -> Write a MongoDB query to find employees who have both "JavaScript" and 
+"Node.js" in their skills and are permanent employees
+printjson(
+	db.employees.find({isPermanent:true, skills:{$all:["JavaScript", "Node.js"]}}, {_id:0, name:1, skills:1})
+)
+
+9 -> 
+Write a MongoDB query to find employees who joined in the year 2021 
+(based on the joiningDate field).
+printjson(
+	db.employees.find({joiningDate:{$gt:ISODate('2021-01-01T00:00:00.000Z'), $lt:ISODate('2022-01-01T00:00:00.000Z')}},{_id:0,name:1,age:1, joiningDate:1})
+)
+
+10 -> Write a MongoDB query to find employees whose pin code is even and greater than 400000
+printjson(
+	db.employees.find({"address.pinCode":{$gt:400000, $mod:[2,0]}},{_id:0, name:1,address:1})
+)
+
