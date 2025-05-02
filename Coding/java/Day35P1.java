@@ -78,6 +78,7 @@ public class Day35P1 {
         // dfs(arr, 0, Integer.MIN_VALUE, Integer.MAX_VALUE, 0);
         // System.out.println(res);
         System.out.println(sorting(arr));
+        System.out.println(useMap(arr));
         sc.close();
     }
     @SuppressWarnings("unused")
@@ -108,5 +109,19 @@ public class Day35P1 {
             }
         }
         return ans;
+    }
+    private static int useMap(int[] nums){
+        Map<Integer, Integer> map = new HashMap<>();
+        for(int num: nums){
+            map.put(num, map.getOrDefault(num, 0)+1);
+        }
+        int res = 0;
+        for(int k: map.keySet()){
+            int m = map.get(k);
+            int n = map.getOrDefault(k-1, 0);
+            if(n!=0) 
+            res = Math.max(res, m+n);
+        }
+        return res;
     }
 }
