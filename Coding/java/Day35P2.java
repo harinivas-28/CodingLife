@@ -1,4 +1,5 @@
 package Coding.java;
+import java.util.*;
 /*
  * Now a days, everyone is used to type the words in short-forms,
 A short-form can be created by replacing non-intersected substrings 
@@ -6,7 +7,7 @@ and non-adjacent substrings with their respective lengths.
 
 e.g., elite can be written as follows:
     - e3e (by replacing lit with 3), 
-    - el2e (by replacing it with 2), 
+    - el2e (by replacing it with 2),  
 	- 1l1t1 (by replacing e,i,e, with 1,1,1)
     - 3t1 (by replacing eli and e with 3 and 1), etc.
 	and can't be written as follows:
@@ -46,7 +47,6 @@ Sample Output-2:
 [1s1, 1se, 2e, 3, c1e, c2, cs1, cse]
 
  */
-import java.util.*;
 public class Day35P2 {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
