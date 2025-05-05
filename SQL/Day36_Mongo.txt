@@ -1,0 +1,51 @@
+11 -> Write a MongoDB query to find employees whose names start with the letter 'A'.
+
+printjson(
+	db.employees.find({name: {$regex: /^A/}}, {_id:0, name:1})
+)
+
+12 -> Write a MongoDB query to find employees whose names end with the letter 'a'.
+
+printjson(
+	db.employees.find({name: {$regex: /a$/}},{_id:0,name:1})
+)
+
+13 -> Write a MongoDB query to find employees whose name contains the substring 'vi'
+(case-insensitive).
+
+printjson(
+	db.employees.find({name: {$regex: /vi/, $options: 'i'}},{_id:0, name:1})
+)
+
+14 -> Write a MongoDB query to find employees whose email is from the domain example.com
+and the email username ends with 'a'.
+
+printjson(
+	db.employees.find({email: {$regex: /^.*a@example\.com$/, $options:'i'}},{_id:0, name:1, email:1})
+)
+
+15 -> Write a MongoDB query to find employees who live in cities whose name starts 
+with 'B' or 'C'.
+
+printjson(
+	db.employees.find({"address.city": {$regex: /^[BC]/}},{_id:0, name:1, "address.city":1})
+)
+
+16 -> Write a MongoDB query to find employees whose state name in the address starts 
+with a capital letter and contains at least one whitespace (multi-word state).
+
+printjson(
+	db.employees.find({"address.state": {$regex: /^[A-Z].*\s.+/}}, {_id:0, name:1, "address.state":1})
+)
+
+17 -> Write a MongoDB query to find employees whose skills include exactly 6-character words.
+
+printjson(
+	db.employees.find({skills:{$elemMatch: {$regex: /^.{6}$/, $options: 'i'}}},{_id:0, name:1, skills:1})
+)
+
+18 -> Write a MongoDB query to find employees whose pin code has a repeated digit (e.g., 440001).
+
+printjson(
+	db.employees.find({"address.pinCode": {$regex: /(\d)\1/}}, {_id:0, name:1, "address.pinCode":1})
+)
