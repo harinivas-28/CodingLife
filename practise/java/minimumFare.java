@@ -44,6 +44,7 @@ public class minimumFare {
         // System.out.println(total);
         return total;
     }
+    @SuppressWarnings("unused")
     private static void fun(List<int[]> l, int idx, int sum, int k, int n){
         if(idx>=l.size()){
             if(k==l.size()/2 && n==l.size()/2){
