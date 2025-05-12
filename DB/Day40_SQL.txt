@@ -1,0 +1,95 @@
+/*
+
+Sample Output:
+==============
+Name    TotalSpent                                                                                                      
+Alice Johnson   1625.00                                                                                                 
+George Clark    1200.00                                                                                                 
+Bob Smith       1050.00                                                                                                 
+Charlie Davis   1050.00                                                                                                 
+Diana Williams  750.00                                                                                                  
+Ethan Brown     550.00                                                                                                  
+Fiona Adams     250.00 
+
+
+Customers:
+==========
+Field   Type    Null    Key     Default Extra                                                                           
+CustomerID      int     NO      PRI     NULL                                                                            
+Name    varchar(255)    YES             NULL                                                                            
+Email   varchar(255)    YES             NULL                                                                            
+Address varchar(255)    YES             NULL                                                                            
+PhoneNumber     varchar(20)     YES             NULL                                                                    
+
+Orders:
+=======
+Field   Type    Null    Key     Default Extra                                                                           
+OrderID int     NO      PRI     NULL                                                                                    
+CustomerID      int     YES     MUL     NULL                                                                            
+OrderDate       date    YES             NULL                                                                            
+TotalCost       decimal(10,2)   YES             NULL                                                                    
+Status  varchar(20)     YES             NULL                                                                            
+
+OrderItems:
+============
+Field   Type    Null    Key     Default Extra                                                                           
+OrderItemID     int     NO      PRI     NULL                                                                            
+OrderID int     YES     MUL     NULL                                                                                    
+ProductID       int     YES     MUL     NULL                                                                            
+Quantity        int     YES             NULL                                                                            
+UnitPrice       decimal(10,2)   YES             NULL                                                                    
+
+Products:
+=========
+Field   Type    Null    Key     Default Extra                                                                           
+ProductID       int     NO      PRI     NULL                                                                            
+Name    varchar(255)    YES             NULL                                                                            
+Description     varchar(255)    YES             NULL                                                                    
+Price   decimal(10,2)   YES             NULL  
+
+*/
+
+1 ->
+List the names and emails of customers who placed orders with the status "Delivered".
+-->
+select distinct c.name, c.email from Customers c 
+left join Orders o on c.customerid=o.customerid
+where o.status = "Delivered";
+
+2 ->
+Calculate the total amount spent by each customer and display customer names
+along with their total spending, ordered by highest spending first.
+-->
+select c.name, sum(o.totalcost) TotalSpent from Customers c
+left join Orders o on c.customerid=o.customerid
+group by c.customerid having TotalSpent is not null
+order by TotalSpent desc;
+
+3 ->
+Show product names along with the total quantity sold for each product. Display 
+only products where the total quantity sold is greater than or equal to 2.
+
+-->
+select p.name ProductName, sum(o.quantity) TotalQuantitySold from OrderItems o
+join Products p on o.productid=p.productid
+group by p.productid having TotalQuantitySold >= 2;
+
+4 ->
+Find all orders placed by customers living in "Texas (TX)".Include customer name,
+order date, total cost, and status.
+
+-->
+select c.name, o.orderdate, o.totalcost, o.status
+from Customers c join Orders o
+on c.customerid= o.customerid
+where c.address like '%TX%';
+
+5 -> 
+List orders that contain more than one item. Show OrderID, customer name, and 
+the total number of items in the order.
+
+-->
+select o1.orderid, c.name customername, count(o2.quantity) numberofitems
+from Orders o1 join Customers c on o1.customerid=c.customerid
+join OrderItems o2 on o1.orderid=o2.orderid group by o1.orderid, c.name having numberofitems >1 
+order by customername;
