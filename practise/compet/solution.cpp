@@ -29,35 +29,36 @@
     cout.tie(NULL);
 
 using namespace std;
+int countCute(vector<int>& a) {
+    int n = a.size();
+    int ans = 0;
 
-string getKey(int x) {
-    int t = x;
-    int freq[10] = {0};
-    // count digits of x
-    while (x > 0) {
-        freq[x % 10]++;
-        x /= 10;
+    for (int center = 0; center < n; ++center) {
+        int i = center, j = center;
+
+        // Strictly increasing to the left
+        while (i > 0 && a[i - 1] < a[i]) i--;
+
+        // Strictly decreasing to the right
+        while (j + 1 < n && a[j] > a[j + 1]) j++;
+
+        // Length of bitonic subarray
+        int len = j - i + 1;
+        if (len >= 2) {
+            // Every subarray from i to j with center at 'center' is cute
+            ans += (len * (len + 1)) / 2 - (len - 1); // Count of all subarrays - non bitonic parts
+        }
     }
-    x = t+1;
-    while (x > 0) {
-        freq[x % 10]++;
-        x /= 10;
-    }
-    string key = "";
-    FOR(i, 0, 9){
-        key += string(freq[i], '0' + i);
-    }
-    return key;
+
+    return ans;
 }
+
 void solve() {
     int n;
     cin >> n;
-    set<string> set;
-    FOR(i, 1, n){
-        string s = getKey(i);
-        set.insert(s);
-    }
-    cout << set.size() << nl;
+    vector<int> a(n);
+    for (int& x : a) cin >> x;
+    cout << countCute(a) << "\n";
 }
 
 int main() {

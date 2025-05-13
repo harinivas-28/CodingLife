@@ -1,0 +1,40 @@
+1 ->
+Find customers who have spent more than the average order total
+
+-->
+select distinct c.name, c.email from Customers c join
+Orders o on c.customerid=o.customerid
+where o.totalcost>(select avg(totalcost) from Orders);
+
+2 ->
+List product names that were included in the most expensive order
+
+-->
+select distinct p.name from Products p
+join OrderItems o on p.productid=o.productid
+where o.orderid = (select orderid from Orders order by totalcost desc limit 1);
+
+3 ->
+Show customers who placed more orders than the average number of orders per 
+customer
+
+-->
+select c.customerid, c.name, count(o.customerid) numOrders from Customers c
+join Orders o on c.customerid=o.customerid
+group by o.customerid, c.name having numorders > 
+(select avg(ordercount) from 
+(select count(*) ordercount from Orders group by customerid) as sub);
+
+4 ->
+Find the name of the customer who spent the most in total
+
+-->
+select c.name, sum(o.totalcost) totalspent from Customers c join Orders o 
+on c.customerid=o.customerid group by c.customerid order by totalspent desc;
+
+5 ->
+Get product names that were never ordered
+
+-->
+select p.name from Products p left join OrderItems o 
+on p.productid=o.productid where o.productid is null;
