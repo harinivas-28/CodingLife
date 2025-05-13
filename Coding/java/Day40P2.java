@@ -68,6 +68,7 @@ public class Day40P2 {
             d-=arr[i];
             i++;
         }
+        sc.close();
         System.out.println(rc);
     }
 }

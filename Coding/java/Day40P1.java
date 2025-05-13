@@ -81,6 +81,7 @@ public class Day40P1 {
                 }
             }
         }
+        sc.close();
         System.out.println(res);
     }
     private static boolean dfs(int i, int j, int[][] grid, boolean[][] vis){

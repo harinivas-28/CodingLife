@@ -74,6 +74,7 @@ public class Day41P2 {
                 g[i][j] = sc.nextInt();
             }
         }
+        sc.close();
         int s = Math.max(m, n);
         int[][] rowSum = new int[m][n+1];
         int[][] colSum = new int[n][m+1];

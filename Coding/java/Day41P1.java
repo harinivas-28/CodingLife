@@ -70,6 +70,7 @@ public class Day41P1 {
                 cnt++;
             }
         }
+        sc.close();
 //        System.out.println(sb.toString());
         System.out.println(cnt);
     }
