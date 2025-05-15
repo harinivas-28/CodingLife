@@ -43,6 +43,7 @@ public class graphColoring {
             edges.add(new int[]{u, v});
         }
         int m = sc.nextInt(); // m colors
+        sc.close();
         System.out.println(colorGraph(V, edges, m));
     }
     private static boolean colorGraph(int V, List<int[]> edges, int m){
