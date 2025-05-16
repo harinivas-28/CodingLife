@@ -5,8 +5,8 @@ There are N employees from 3 different companies in a row, emps[], the employees
 are identified using company IDs as 1,2,3. A Courier Boy need to deliver
 P parcels to these 3 companies. The parcel details are given as parcels[],
 where parcel[i]=[Ci,CIDi], i-th parcel, 'Ci' is Courier Boy's current position,
-and  'CIDi' is company's ID, he/she need to deliver parcel[i] from Ci position
-to the nearest employee belongs to companay ID equals to CIDi in the row.
+and  'CIDi' is company's ID, he/she needs to deliver parcel[i] from Ci position
+to the nearest employee belongs to company ID equals to CIDi in the row.
 
 You are given emps[] and parcels[] information,
 Your task is to help the courier boy to find the distance between him to
@@ -59,9 +59,42 @@ public class Day44P2 {
             int x = sc.nextInt(), y = sc.nextInt();
             l.add(new int[]{x, y});
         }
-        System.out.println(bruteForce(n, p, cmp, l));
-        System.out.println(optimizedBS(n, p, cmp, l));
+        System.out.println("Brute Force: "+bruteForce(n, p, cmp, l)); // O(n*p)
+        System.out.println("Optimized Binary Search: "+optimizedBS(n, p, cmp, l)); // O(n+p*logn)
+        System.out.println("Optimized 2-Pass: "+optimized2Pass(n, p, cmp, l)); // O(n*(no of uniqueValues in cmp==3))
 
+    }
+    private static String optimized2Pass(int n, int p, int[] cmp, List<int[]> l){
+        Set<Integer> s = new HashSet<>();
+        for(int x: cmp) s.add(x);
+        Map<Integer, int[]> map = new HashMap<>();
+        for(int x: s){
+            int[] dist = new int[n];
+            Arrays.fill(dist, Integer.MAX_VALUE);
+            int last = -1;
+            for(int i=0;i<n;i++){
+                if(cmp[i]==x) last = i;
+                if(last!=-1) dist[i] = i-last;
+            }
+            last = -1;
+            for(int i=n-1;i>=0;i--){
+                if(cmp[i]==x) last = i;
+                if(last!=-1) dist[i] = Math.min(dist[i], last-i);
+            }
+            map.put(x, dist);
+        }
+        int[] res = new int[p];
+        for(int i=0;i<p;i++){
+            int[] q = l.get(i);
+            int idx = q[0], tar = q[1];
+            if(!map.containsKey(tar)){
+                res[i] = -1;
+                continue;
+            }
+            int d = map.get(tar)[idx];
+            res[i] = d==Integer.MAX_VALUE ? -1 : d;
+        }
+        return Arrays.toString(res);
     }
     private static String optimizedBS(int n,int p, int[] cmp, List<int[]> l){
         Map<Integer, List<Integer>> map = new HashMap<>();
