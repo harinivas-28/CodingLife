@@ -1,0 +1,117 @@
+/*
+
+Sample Output:
+==============
+
+Name                                                                                                                    
+Name    Email                                                                                                           
+Alice Johnson   alice.johnson@example.com                                                                               
+Bob Smith       bob.smith@example.com                                                                                   
+Charlie Davis   charlie.davis@example.com                                                                               
+Diana Williams  diana.williams@example.com                                                                              
+Ethan Brown     ethan.brown@example.com                                                                                 
+George Clark    george.clark@example.com                                                                                                          
+                                                                                            
+
+
+Customers:
+==========
+Field   Type    Null    Key     Default Extra                                                                           
+CustomerID      int     NO      PRI     NULL                                                                            
+Name    varchar(255)    YES             NULL                                                                            
+Email   varchar(255)    YES             NULL                                                                            
+Address varchar(255)    YES             NULL                                                                            
+PhoneNumber     varchar(20)     YES             NULL                                                                    
+
+Orders:
+=======
+Field   Type    Null    Key     Default Extra                                                                           
+OrderID int     NO      PRI     NULL                                                                                    
+CustomerID      int     YES     MUL     NULL                                                                            
+OrderDate       date    YES             NULL                                                                            
+TotalCost       decimal(10,2)   YES             NULL                                                                    
+Status  varchar(20)     YES             NULL                                                                            
+
+OrderItems:
+============
+Field   Type    Null    Key     Default Extra                                                                           
+OrderItemID     int     NO      PRI     NULL                                                                            
+OrderID int     YES     MUL     NULL                                                                                    
+ProductID       int     YES     MUL     NULL                                                                            
+Quantity        int     YES             NULL                                                                            
+UnitPrice       decimal(10,2)   YES             NULL                                                                    
+
+Products:
+=========
+Field   Type    Null    Key     Default Extra                                                                           
+ProductID       int     NO      PRI     NULL                                                                            
+Name    varchar(255)    YES             NULL                                                                            
+Description     varchar(255)    YES             NULL                                                                    
+Price   decimal(10,2)   YES             NULL  
+
+
+*/
+
+use fs;
+
+1 -> 
+Find customers who have placed orders with a total cost greater than the average
+total cost of all orders
+
+-- Write your query below.
+select c.name, c.email from Customers c left join Orders o
+on c.customerid=o.customerid group by c.customerid
+having sum(o.totalcost) > (select avg(totalcost) from Orders);
+
+2 ->
+Retrieve product names that have been ordered more than the average quantity of
+all products
+
+-- Write your query below.
+select p.name from Products p 
+join OrderItems oi on p.ProductID=oi.ProductID
+group by p.name having count(*)>(select avg(quantity) from OrderItems);
+
+3 ->
+Find customers who ordered the most expensive product
+
+-- Write your query below.
+SELECT DISTINCT c.Name, c.Email
+FROM Customers c
+JOIN Orders o ON c.CustomerID = o.CustomerID
+JOIN OrderItems oi ON o.OrderID = oi.OrderID
+JOIN Products p ON oi.ProductID = p.ProductID
+WHERE p.Price = (
+    SELECT MAX(Price) FROM Products
+);
+
+4 -> 
+List order IDs where all items in the order are priced above the average product
+price
+
+-- Write your query below.
+SELECT o.OrderID
+FROM Orders o
+JOIN OrderItems oi ON o.OrderID = oi.OrderID
+WHERE oi.UnitPrice > (
+    SELECT AVG(Price) FROM Products
+)
+GROUP BY o.OrderID
+HAVING COUNT(*) = (
+    SELECT COUNT(*) 
+    FROM OrderItems oi2 
+    WHERE oi2.OrderID = o.OrderID
+);
+
+5 ->
+Find the names of products that are only ordered by customers who live in a
+specific city (e.g., 'New York')
+
+-- Write your query below.
+SELECT DISTINCT p.Name
+FROM Products p
+JOIN OrderItems oi ON p.ProductID = oi.ProductID
+JOIN Orders o ON oi.OrderID = o.OrderID
+JOIN Customers c ON o.CustomerID = c.CustomerID
+GROUP BY p.ProductID, p.Name
+HAVING SUM(CASE WHEN c.Address NOT LIKE '%New York%' THEN 1 ELSE 0 END) = 0;
