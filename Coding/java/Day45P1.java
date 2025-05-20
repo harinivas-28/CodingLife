@@ -2,7 +2,7 @@ package Coding.java;
 import java.util.*;
 /*
 Mr Panda is given two words, word-1 and word-2, both are 1-indexed.
-He want to transform word-1 into word-2 in S number of steps or less.
+He wants to transform word-1 into word-2 in S number of steps or less.
 
 Mr Panda is allowed to perfom the opeartion at p-th step ( 1 <= p <= S ):
     - Choose one character at index-q from word-1, and that character at
@@ -90,12 +90,18 @@ public class Day45P1 {
             System.out.println(false);
             return;
         }
-        int cnt = 0;
+        Map<Character, Integer> map = new HashMap<>();
         for(int i=0;i<s.length();i++){
-            if(s.charAt(i)==t.charAt(i)) continue;
-            int c1 = s.charAt(i);
-            int c2 = t.charAt(i);
-
+            char c1 = s.charAt(i);
+            char c2 = t.charAt(i);
+            if(c1==c2) continue;
+            int dist = c2>c1 ? c2-c1 : ('z'-c2)+(c1-'a');
+            if(dist>n || map.getOrDefault(c1, 0)+dist>n){
+                System.out.println(false);
+                return;
+            }
+            map.put(c1, map.getOrDefault(c1, 0)+dist);
         }
+        System.out.println(true);
     }
 }
