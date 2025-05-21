@@ -1,0 +1,76 @@
+/*
+
+
+Sample Output:
+==============
+Name    Email                                                                                                           
+Alice Johnson   alice.johnson@example.com                                                                               
+George Clark    george.clark@example.com 
+                                                                         
+                                                                                                      
+                                                                                            
+
+
+Customers:
+==========
+Field   Type    Null    Key     Default Extra                                                                           
+CustomerID      int     NO      PRI     NULL                                                                            
+Name    varchar(255)    YES             NULL                                                                            
+Email   varchar(255)    YES             NULL                                                                            
+Address varchar(255)    YES             NULL                                                                            
+PhoneNumber     varchar(20)     YES             NULL                                                                    
+
+Orders:
+=======
+Field   Type    Null    Key     Default Extra                                                                           
+OrderID int     NO      PRI     NULL                                                                                    
+CustomerID      int     YES     MUL     NULL                                                                            
+OrderDate       date    YES             NULL                                                                            
+TotalCost       decimal(10,2)   YES             NULL                                                                    
+Status  varchar(20)     YES             NULL                                                                            
+
+OrderItems:
+============
+Field   Type    Null    Key     Default Extra                                                                           
+OrderItemID     int     NO      PRI     NULL                                                                            
+OrderID int     YES     MUL     NULL                                                                                    
+ProductID       int     YES     MUL     NULL                                                                            
+Quantity        int     YES             NULL                                                                            
+UnitPrice       decimal(10,2)   YES             NULL                                                                    
+
+Products:
+=========
+Field   Type    Null    Key     Default Extra                                                                           
+ProductID       int     NO      PRI     NULL                                                                            
+Name    varchar(255)    YES             NULL                                                                            
+Description     varchar(255)    YES             NULL                                                                    
+Price   decimal(10,2)   YES             NULL  
+
+
+*/
+
+use fs;
+
+1 -> 
+List customers who have made at least one order with a total cost higher 
+than $1000
+
+-- Write your query below.
+select distinct c.name, c.email from Customers c
+join Orders o using(customerid)
+where o.totalcost > 1000;
+
+2 ->
+Find all customers who have ordered a "Laptop".
+
+-- Write your query below.
+select c.name from Customers c join Orders o
+using(customerid) join OrderItems oi 
+using(orderid) join Products p
+using(productid) where p.name="Laptop";
+
+3 ->
+List customers who have never placed an order.
+
+-- Write your query below.
+select name from Customers where customerid not in (select distinct customerid from Orders);

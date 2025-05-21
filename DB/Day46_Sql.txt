@@ -1,0 +1,100 @@
+/*
+
+
+Sample Output:
+==============
+
+CustomerID      Name    OrderCount                                                                                      
+1       Alice Johnson   4                                                                                               
+2       Bob Smith       3                                                                                               
+3       Charlie Davis   3                                                                                               
+4       Diana Williams  2                                                                                               
+5       Ethan Brown     1                                                                                               
+6       Fiona Adams     1                                                                                               
+7       George Clark    1                                                                                               
+8       Henry Taylor    0                                                                                               
+9       Irene Green     0        
+
+Customers:
+==========
+Field   Type    Null    Key     Default Extra                                                                           
+CustomerID      int     NO      PRI     NULL                                                                            
+Name    varchar(255)    YES             NULL                                                                            
+Email   varchar(255)    YES             NULL                                                                            
+Address varchar(255)    YES             NULL                                                                            
+PhoneNumber     varchar(20)     YES             NULL                                                                    
+
+Orders:
+=======
+Field   Type    Null    Key     Default Extra                                                                           
+OrderID int     NO      PRI     NULL                                                                                    
+CustomerID      int     YES     MUL     NULL                                                                            
+OrderDate       date    YES             NULL                                                                            
+TotalCost       decimal(10,2)   YES             NULL                                                                    
+Status  varchar(20)     YES             NULL                                                                            
+
+OrderItems:
+============
+Field   Type    Null    Key     Default Extra                                                                           
+OrderItemID     int     NO      PRI     NULL                                                                            
+OrderID int     YES     MUL     NULL                                                                                    
+ProductID       int     YES     MUL     NULL                                                                            
+Quantity        int     YES             NULL                                                                            
+UnitPrice       decimal(10,2)   YES             NULL                                                                    
+
+Products:
+=========
+Field   Type    Null    Key     Default Extra                                                                           
+ProductID       int     NO      PRI     NULL                                                                            
+Name    varchar(255)    YES             NULL                                                                            
+Description     varchar(255)    YES             NULL                                                                    
+Price   decimal(10,2)   YES             NULL  
+
+
+*/
+
+1 ->
+List each customer along with the number of orders they’ve placed.
+-->
+use fs;
+select c.customerid, c.name, count(o.orderid) OrderCount 
+from Customers c left join Orders o
+on c.customerid=o.customerid
+group by c.customerid, c.name, c.email;
+
+2 ->
+Find customers who have ordered the most expensive product.
+-->
+-- Write your query below.
+select distinct c.customerid, c.name, c.email, c.address, c.phonenumber 
+from Customers c join Orders o
+on c.customerid=o.customerid join OrderItems oi
+on o.orderid=oi.orderid join Products p
+on oi.productid=p.productid
+where p.price = (select max(price) from Products);
+
+3 ->
+Show each product along with the total quantity sold across all orders.
+-->
+-- Write your query below.
+select p.productid, p.name, sum(oi.quantity) TotalQuantitySold from 
+Products p left join OrderItems oi
+on p.productid=oi.productid
+group by p.productid order by p.productid;
+
+4 ->
+List customers who have never placed an order.
+-->
+-- Write your query below.
+select c.customerid, c.name, c.email, c.address, c.phonenumber from
+Customers c where c.customerid not in (select distinct customerid from Orders);
+
+5 ->
+Find orders where the total cost is higher than the total amount spent by at
+least one other
+-->
+-- Write your query below.
+select o.orderid, o.customerid, o.orderdate, o.totalcost, o.status
+from Orders o where o.totalcost > (select min(total_spent) from (select sum(totalcost) as total_spent 
+from Orders group by customerid) as cust_totals
+where cust_totals.total_spent < o.totalcost);
