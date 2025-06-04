@@ -1,3 +1,4 @@
+package Coding.java;
 /*
 Write a Java program to find the nth prime number. 
 The value of n should be input by the user.
@@ -13,7 +14,7 @@ Sample Output:
 */
 import java.util.*;
 
-class PrimeFinder {
+public class Day56P3 {
 
     public static int findNthPrime(int n) {
         // Implement this method.
@@ -41,5 +42,6 @@ class PrimeFinder {
         
         int result = findNthPrime(n);
         System.out.println(result);
+        sc.close();
     }
 }

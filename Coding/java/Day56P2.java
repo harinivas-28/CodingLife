@@ -1,3 +1,4 @@
+package Coding.java;
 /*
 Write Java code for a method which takes a String (a sentence) as input 
 and returns a HashMap. The Map key is String (word in the String) and 
@@ -19,7 +20,7 @@ powerful: 1
 */
 import java.util.*;
 
-public class WordFrequency {
+public class Day56P2 {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         String s = sc.nextLine();
@@ -34,6 +35,7 @@ public class WordFrequency {
         for(String k: map.keySet()){
             System.out.println(k+": "+map.get(k));
         }
+        sc.close();
     }
     private static String removeSymb(String s){
         String res = "";
