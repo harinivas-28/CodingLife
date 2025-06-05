@@ -19,23 +19,23 @@ public class Day56P1 {
         Students students = new Students();
         students.readStudentData(); // assume students are populated here
 
-        Student topper = getTopper(students);
+        Students.Student topper = getTopper(students);
         int totalMarks = 0;
-        for (Marks m : topper.marks) {
+        for (Students.Marks m : topper.marks) {
             totalMarks += m.marks;
         }
         System.out.println("Topper is: " + topper + " with total marks: " + totalMarks);
     }
 
-    static Student getTopper(Students students2) {
+    static Students.Student getTopper(Students students2) {
         // Implement only this method. Do not alter the code.
-        List<Student> stds = students2.students;
+        List<Students.Student> stds = students2.students;
         int max = 0;
-        Student res = null;
-        for(Student s: stds){
-            List<Marks> marks = s.marks;
+        Students.Student res = null;
+        for(Students.Student s: stds){
+            List<Students.Marks> marks = s.marks;
             int sum = 0;
-            for(Marks m: marks){
+            for(Students.Marks m: marks){
                 sum += m.marks;
             }
             if(max<sum){
@@ -79,31 +79,32 @@ class Students {
         students.add(s2);
         students.add(s3);
     }
-}
 
-class Student {
-    String name;
-    int rollNumber;
-    List<Marks> marks;
+    static class Student {
+        String name;
+        int rollNumber;
+        List<Marks> marks;
 
-    public Student(String name, int rollNumber, List<Marks> marks) {
-        this.name = name;
-        this.rollNumber = rollNumber;
-        this.marks = marks;
+        public Student(String name, int rollNumber, List<Marks> marks) {
+            this.name = name;
+            this.rollNumber = rollNumber;
+            this.marks = marks;
+        }
+
+        public String toString() {
+            return name + " (Roll: " + rollNumber + ")";
+        }
     }
 
-    public String toString() {
-        return name + " (Roll: " + rollNumber + ")";
+    static class Marks {
+        String subject;
+        int marks;
+
+        public Marks(String subject, int marks) {
+            this.subject = subject;
+            this.marks = marks;
+        }
     }
 }
 
-class Marks {
-    String subject;
-    int marks;
-
-    public Marks(String subject, int marks) {
-        this.subject = subject;
-        this.marks = marks;
-    }
-}
 
