@@ -1,0 +1,93 @@
+### 🔍 **🧩 SQL Practice Questions**
+
+#### 🔹 Basic Joins
+
+1.  **List all students with their department names.**
+    
+2.  **Get the course name and corresponding department name for each course.**
+    
+3.  **Show faculty names along with the courses they teach.**
+    
+4.  **List all enrollments with student name, course name, and grade.**
+    
+
+* * *
+
+#### 🔹 Aggregation &amp; Grouping
+
+5.  **Find the total number of students in each department.**
+    
+6.  **Get the average grade per course.**
+    
+7.  **Find the department with the most faculty members.**
+    
+8.  **List the number of courses offered by each department.**
+    
+
+* * *
+
+#### 🔹 Filtering &amp; Subqueries
+
+9.  **List students who have enrolled in more than 3 courses.**
+    
+10.  **Find students who have not received an 'F' grade in any course.**
+    
+11.  **List courses that no student has enrolled in.**
+    
+12.  **List faculties who are not teaching any course.**
+    
+
+* * *
+
+#### 🔹 Advanced Joins &amp; Analysis
+
+13.  **Find the top 5 students with the highest average grades.**
+    
+14.  **For each department, find the student with the highest number of enrollments.**
+    
+15.  **Show all faculty members who teach courses in departments other than their own.**
+    
+16.  **Find all students who share a department with at least 2 faculty members.**
+    
+
+* * *
+
+#### 🔹 Updates &amp; Deletes
+
+17.  **Increase course credits by 1 for all courses with average grade below 'C'.**
+    
+18.  **Delete enrollments where the grade is 'F'.**
+    
+19.  **Update the HOD of the department that has the most students.**
+    
+20.  **Reassign all orphan faculty (who teach no course) to a new department.**
+    
+
+* * *
+
+#### 🔹 Window Functions &amp; Ranking
+
+21.  **Rank students based on number of courses enrolled in.**
+    
+22.  **For each course, rank students by their grade alphabetically.**
+    
+23.  **Show rolling count of enrollments by date.**
+    
+24.  **For each student, show their latest enrollment.**
+    
+
+* * *
+
+#### 🔹 Real-Life Reports
+
+25.  **Generate a report with student name, department, courses enrolled, grades, and faculty teaching them.**
+    
+26.  **Create a department-wise performance summary: total students, average GPA, top course.**
+    
+27.  **List course-faculty combinations with more than 5 students enrolled.**
+    
+28.  **Find the most active student in each department (by enrollments).**
+    
+29.  **For each faculty, list all the students they've taught.**
+    
+30.  **Generate a cross-tab (pivot-like) view of student grades per course.**
