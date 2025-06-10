@@ -1,0 +1,756 @@
+Question 1 – Flower Prints
+
+
+
+Emma owns a boutique and decides to design a new gown. She wants to design the gown by printing some flowers over it. 
+There are X printing blocks in total, and each block consists of some number of flowers.
+
+your task is to Help Emma find and return the maximum number of flowers that cannot be printed on the gown, using the X printing blocks.
+
+Any block can be used any number of times.
+
+Note: The number of flowers on any two blocks is co-prime.
+
+Input Specification:
+
+ input1: An integer value X, representing the total number of blocks available
+ input2: An integer array representing the number of flowers on each printing block
+
+Output Specification:
+
+ Return an integer value representing the maximum number of flowers that cannot be printed on the gown.
+
+Example 1:
+----------
+input1: 2  
+input2: [3, 5]  
+
+Output: 7  
+
+Explanation:
+------------
+Emma has two blocks: one of 3 flowers, one of 5 flowers. She cannot print 1, 2, 4, and 7 flowers using the given blocks but can print any higher integral.
+
+Since 7 is the maximum number of flowers that cannot be printed, therefore 7 is returned as the output.
+
+Example 2:
+----------
+input1: 2  
+input2: [2, 5]  
+
+Output: 3  
+
+Explanation:
+------------
+Emma has two blocks:one has 2 flowers and the other has 5 flowers.she cannot print 1 flower and 3 flowers using these blocks but can print any higher integral.
+since 3 is the maximum number of flowers that cannot be printed.therefore 3 is returned as output.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+ Question 2 – LCS With Palindrome
+
+Sam loves palindromes. One day, his father comes and gives him two strings. Sam is interested in finding the length of the longest common palindrome subsequence and wants your help with it.
+
+Input Specification:
+-------------------
+ input1: First string which is given by his father
+ input2: Second string which is given by his father
+
+Output Specification:
+
+ Return the length of the longest common palindrome subsequence.
+
+Example 1:
+----------
+input1: adfa  
+input2: aagh
+
+Output: 2  
+
+
+Explanation: 
+------------
+The only common palindrome subsequence is aa so length is 2.
+
+Example 2:
+----------
+input1: acbda  
+input2: fgaba  
+Output: 3  
+
+
+Explanation: The longest common palindrome subsequence is aba so length is 3.
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+ Question 3 – Tree Puzzle
+
+
+
+Shifu was good at solving problems involving trees.so one day as a challenge Master Oogway gave him a problem.He gave Shifu the post-order and in-order traversals of a tree and asked him to tell the elements in a sequential order present between two levels of that tree whose index he had provided himself. 
+
+Input Specification:
+--------------------
+ input1: The in-order traversal array of the tree
+ input2: The post-order traversal array of the tree
+ input3: The lower level 'l'
+ input4: The higher level 'h'
+
+Output Specification:
+--------------------
+ Return the array representing the elements between input3 and input4 levels of the tree.
+
+Example 1:
+----------
+input1: [2, 1, 3]  
+input2: [2, 3, 1]  
+input3: 1  
+input4: 2  
+Output: [1, 2, 3]  
+
+
+Explanation:
+-------------
+The tree is:
+
+
+    1
+   / \
+  2   3
+
+
+and the nodes between Levels 1 and 2 are 1, 2 and 3.
+
+Example 2:
+----------
+input1: [4, 2, 5, 1, 6, 3, 7]  
+input2: [4, 5, 2, 6, 7, 3, 1]  
+input3: 2  
+input4: 3 
+
+Output: [2, 3, 4, 5, 6, 7]  
+
+
+Explanation:
+------------
+Here,the tree will be:
+
+
+        1
+       / \
+      2   3
+     / \ / \
+    4  5 6  7
+
+
+and the nodes between Levels 2 and 3 are 2, 3, 4, 5, 6, 7.
+
+------------------------------------------------------------------------------------------------------------------------------
+
+ Question 4 – Pizza Delivery Boy
+
+
+
+Pizza Delivery Boy
+
+A pizza delivery boy got X orders to be delivered on his first day at work. The position of X locations is given in (a, b) co‑ordinates, and the boy’s speed is given in units per minute.
+
+Find the maximum of the total traveling time it would take from one place to another.
+
+Note: Use Euclidean’s method to calculate the distance between two points. Euclidean Distance is defined as:
+
+
+sqrt[(b2 - b1)^2 + (a2 - a1)^2]
+
+Input Specification:
+--------------------
+ input1: Speed of Dan
+ input2: Value of X
+ input3: A 2‑D array consisting of (x, y) co‑ordinates of X locations
+
+Output Specification:
+---------------------
+Return maximum traveling time among all the points. The answer should be rounded off to 6 decimal places.
+
+
+
+Example 1:
+----------
+input1: 2
+input2: 3
+input3: [(0,0),(0,2),(2,0)]
+
+
+Output: 1.414214
+
+Explanation:
+-------------
+The maximum distance is between points (0,2) and (2,0), which is 2.828428.
+Dan’s speed is 2, so time taken = 1.414214.
+
+
+
+Example 2:
+----------
+
+input1: 4
+input2: 4
+input3: [(0,0),(-2,2),(2,2),(1,0)]
+
+
+Output:
+1.000000
+
+Explanation:
+------------
+The maximum distance is between points (-2,2) and (2,2), which is 4. Dan’s speed is 4, so time taken = 1.000000.
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+ Question 5 – Hierarchy
+
+
+Hierarchy
+
+You are given a string(S) of digits. All the digits are 0s or 1s. Each 0 represents a dead node and each 1 represents an alive node. Assuming that the 0ᵗʰ node in the string is the oldest, a family tree is created in the following manner:
+
+ -> 0ᵗʰ node is the root
+ ->Every alive node must have 2 children
+ -> Dead nodes cannot have children
+ ->The iᵗʰ node in the string is elder than (i+1)ᵗʰ node, and any node is made the child of the eldest node alive with 0 or 1 children.
+ ->In the family tree, the elder child of a node is on the left and younger child on the right
+ ->If no node is alive at any layer, then the construction is stopped and this tree is accepted as the final family tree.
+
+Your task is to find the height of the family tree for a given string S.
+
+
+
+Input Specification:
+--------------------
+ input1: String of 0s and 1s
+
+Output Specification:
+---------------------
+Return H, Height of the family tree.
+
+
+
+Example 1:
+----------
+input1: 111
+
+Output: 1
+
+Explanation:
+------------
+Family tree:
+
+
+    1
+   / \
+  1   1
+
+
+H = 1
+
+
+
+Example 2:
+----------
+input1: 1001
+
+Output: 1
+
+Explanation:
+------------
+Family tree:H = 1,the Last node in the string cannot be placed as both the node in the bottom-most layer are dead. 
+
+
+    1
+   / \
+  0   0
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+Question 6 – Construction Work
+
+Construction Work
+
+Luke likes to construct and play with arrays. His dad gave him an array 'M' of length 'N' and assigned to him the following tasks to be done in order:
+
+1. Create continuous groups of size i with the elements of the array M.
+2. Once the groups are created, find the minimum values from each group and select the maximum value among all these minimum values.
+3. Place the highest value as iᵗʰ element in the new array P.
+4. Repeat the process until the group size becomes equal to N.
+
+You must help Luke to find the array P and return it as the output.
+
+Note: Assume 1-based indexing in array M and P.
+
+
+
+Input Specification:
+--------------------
+ input1: An integer value N, representing the length of the array M
+ input2: An integer array M, representing the array Luke’s dad gave him
+
+Output Specification:
+---------------------
+Return the array P as the output.
+
+Example 1:
+----------
+input1: 3
+input2: [1,2,3]
+
+
+Output: [3,2,1]
+
+Explanation:
+------------
+
+With the given array M={1,2,3} we can create continuous groups of size 1,2 and 3
+
+ →There are three Groups of size 1: {1},{2},{3} and the minimum elements in these groups are the elements themselves.We get three choices 1,2 and 3 ,of which the maximum is 3; therefore,the first element of the array p will be 3 
+ 
+ →There are two Groups of size 2 : {1,2},{2,3} and the minimum elements in these groups are {1}and{2},of which the Maximum is 2;therfore,the second element of the array P will be 2
+
+ →There is only one Group of size 3: {1,2,3} and the minimum element of the group is 1.Now, as there are no alternatives to choose from, the third element of the array P will be 1 
+
+Therefore,[3,2,1] is returned as the output.
+
+
+Example 2:
+----------
+
+input1: 4
+input2: [20,10,30,40]
+
+
+Output: [40,30,10,10]
+
+Explanation:
+------------
+With the given array M = [20,10,30,40], we can create continuous groups of size 1,2,3 and 4
+
+ →there are four Groups of size 1 :(20), (10), (30), (40), and the minimum elements in these groups are the elements themselves.We get four choices 20,10,30 and 40 of which the maximum is 40 therefore the first element of the array P will be 40.
+ →there are three Groups of size 2 :(20,10),(10,30) and (30,40), the minimum elements in these groups are (10),(10),(30) of which the maximum is 30; therfore, the second element of the array P will be 30.
+ →there are two Groups of size 3 :(20,10,30) and (10,30,40), the minimum elements in these groups are (10) and (10) of which the maximum is 10; therefore, the third element of the array P will be 10.
+→ there is one group of size 4: (20,10,30,40) and the minimum element of the group is 10,Now as there are no alternatives to choose from the fourth element of the array P will be 10.
+
+Therfore (40,30,10,10) is returned as the output.
+
+-------------------------------------------------------------------------------------------------------------------------
+
+Question 7 
+
+Problem: Honey Madness
+
+Honey Madness
+
+Congratulations! You have been born as a honey bee. The good part is that you do not have to study. The bad part is that you have to work all day, every day to collect honey. You live in a honey home (not Honeycomb).
+
+You have to collect honey from various flowers daily and submit it to various honeycombs spread across the area and return home by a specific time. Your task is to collect as much honey as possible by the allocated time and submit it to the honeycombs.
+
+Each flower has 1 unit of honey and you can only carry 1 unit of honey at a time. Also, covering 1 unit distance requires 1 unit of time. Distance is calculated using Euclidean distance formula.
+
+Find out the maximum units of honey you can collect.
+
+Input Specification:
+---------------------
+* input1: Number of flowers.
+* input2: Number of honeycombs.
+* input3: A 2D array representing the coordinates of each flower.
+* input4: A 2D array representing the coordinates of each honeycomb.
+* input5: Array containing Source coordinates. 
+* input6: Time period.
+
+Output Specification:
+---------------------
+Your function must return the maximum units of honey collected.
+
+Example 1:
+----------
+* input1: 2
+* input2: 2
+* input3: {{3, 3}, {4, 6}}
+* input4: {{5, 5}, {6, 1}}
+* input5: {1, 4}
+* input6: 13
+
+Output: 2
+
+Explanation:
+------------
+You will first go to the flower at (3, 3) with distance sqrt(5) and then to honeycomb at (5, 5) with distance sqrt(8) and then to flower at (4, 6) and to honeycomb at (5, 5) and back to the house at (1,4) with total distance of sqrt{5} + sqrt{8} + sqrt{2} + sqrt{17} = 12.0160.
+
+Example 2:
+----------
+* input1: 4
+* input2: 1
+* input3: {{3, 5}, {7, 5},{7,3}, {8, 4}}
+* input4: {{7, 7}}
+* input5: {5, 5}
+* input6: 22
+
+Output: 3
+
+Explanation:
+------------
+ "Four flowers and 1 honeycomb present. The maximum flowers the honeybees would be able to travel to would be 3 with a total distance of 19.6251. Hence, the answer is 3."
+
+
+ -----------------------------------------------------------------------------------------------------------------------------------
+
+Question: 8
+
+Love Letter
+
+You write a love letter to your friend. However, before your friend can read it. someone else takes it and rotates the characters of
+each word left to right K times. Find the number of words that remain the same even after this shifting of letters.
+
+Note: There can be more than one spaces between the words.
+
+Input Specification:
+-------------------
+input1: String of words
+
+input2: K. number of times rotation happens
+
+Output Specification:
+---------------------
+Your function should return the number of correct words.
+
+Example 1:
+----------
+input1: llohe ereth
+
+input2: 2
+
+Output: 0
+
+Explanation:
+-------------
+In examplet llohe ereth is a rotated string, mence the original string was hello there which is not correct. Hence answer is 0.
+
+Example 2:
+----------
+input1: adaada
+
+input2: 3
+
+Output:1
+
+Explanation:
+------------
+inexample 2 adaada when rotated 3 times gives back "adaada". Hence answer is 1
+
+==============================================================================
+Question:9
+
+Shells
+
+Alan finds a large seashell on a seashore. He finds that it can be broken into two equal halves. Now he chooses one of the 
+remaining shells and continues the breaking operation.
+
+The operations are visualized in the form of a binary tree with all same sized pieces on the same level. Here, the original shell
+is at the root node and the children are the 2 broken halves and so on.
+
+If the it shell is broken, it can be chosen from a certain number of levels depending upon the previous choices of breaking the first
+to (i-1)th shell.
+
+Find and return the sum of all possible levels at which the ith shell can be broken.
+
+Input Specification:
+--------------------
+input1: An integer i denoting the number of shelis to be broken.
+
+Output Specification: 
+---------------------
+Return the sum of all possible levels at which the ith shell can be broken.
+
+Example 1:
+
+input1: 8
+
+Output: 25
+
+
+Explanation:
+------------
+Possible levels lie between 3 to 7.
+
+Since on breaking the shells simultaneously from both the ses. 8 shells can be broken by the 3rd level and on breaking the shells 
+from any of the one side (either left hand or right-hand side), we have to traverse till level 7 to break 8 shells.
+
+Hence. 3+4+5+6+7 25. therefore. 25 is returned as the output.
+
+Example 2:
+----------
+input1: 12
+
+Output: 63
+
+Explanation:
+------------
+Possible levels lie between 2 to 4.
+
+Since on breaking the shells simultaneously from both the sides. 5 shells can be broken by the 2 level and on breaking the shells 
+from any of the one side (either left hand or right-hand side) we have to traverse till level 4 to break 5 shells
+
+Hence 2+3+4 9. therefore 9 is returned as the output
+
+
+------------------------------------------------------------------------------------------------------------------------------------
+Question: 10
+
+Circular Picnic
+
+As a fun tour, a teacher decided to take her students on a picnic to play a game. She made the children sit in a circle and then gave 
+everyone a card. On each card she had written a number, the number could be positive or negative.
+
+On every turn, the child whose turn it was spoke out the number written on his card and this went on till every child had completed his 
+turn.
+
+As a part of the group, you wanted to win the game every time therefore you need to find out the continuous maximum sum which you think 
+has been formed.
+
+Input Specification:
+--------------------
+input1: The number of children n.
+
+Input2: The array representing the numbers which every child spoke.
+
+Output Specification:
+---------------------
+Return the continuous maximum sum.
+
+Example 1:
+----------
+input1:5
+
+Input2: (0,-4,1,3,3)
+
+Output: 7
+
+Explanation:
+------------
+Here, the maximum sum is formed by the elements at third, fourth and fifth positions.
+
+Example 2:
+----------
+input1: 5
+input2: (6, -5, -4, 5,0)
+
+Output: 11
+
+Explanation:
+-----------
+Here, the maximum sum is formed by the elements at fourth, fifth and first positions.
+
+
+---------------------------------------------------------------------------------------------------------------------------
+
+Question: 11
+
+Tech Club Committee Selection Problem
+
+A group of students is planning to form a tech club and the club is open for recruitment.
+They are interviewing students and marking the skill levels in Mathematics and Physics of the `iᵗʰ` student as `(M, P)` respectively. 
+They will be segregating the selected students into committees, and for better efficiency they have a few conditions:
+
+1. All members of a committee should have different skill levels in Mathematics
+2. All members of a committee Should have different skill levels in Physics .
+3. The difference in the skill level for Mathematics and Physics for two students should not be the same.
+       |M1 - M2|should not be equal to |P1 - P2|.
+
+
+you are given an integer N representing the size of a committee and an integer K. representing that K*K students are being interviewed . 
+Your task is to return an integer value representing the number of ways in which the committees can be formed.
+
+note:
+
+* The answer should be returned after performing the modulo operation with 10^4
+* The skill level for K students (k>1) will be (0,0),(0,1)...(k-1,k-1) respectively.
+
+Input Specification:
+--------------------
+* input1: An integer value `N` representing the size of a committee.
+* input2: An integer value `K` representing that `K * K` students are being interviewed.
+
+output specification:
+---------------------
+Return an integer value representing the number of ways in which committees can be formed.
+
+Example 1:
+---------
+input1: 2
+input2: 3
+
+Output:
+8
+
+
+Explanation:
+-----------
+The number of students being interviewed is 3*3=9 and the number of members in a committee is 2.
+The number of ways in which committees can be forn=med while satisfying the conditions is as under 
+
+--------------------------------------------------------------
+|	                   |   student 1                      |       student 2                     |
+|Committees  |(mathematics,physics) | (mathematics,physics)   |
+|-------------------------------------------------------------                                 |
+|1	                  |      (0,0)	    |	   (1,2)              |
+|2	     |      (0,0)	    |	   (2,1)              |
+|3	     |	    (0,1)	    |	   (2,0)              |
+|4	     |      (0,1)	    |	   (2,2)              |
+|5	     |      (0,2)	    |	   (1,0)              |
+|6	     |      (0,2)	    |	   (2,1)              |
+|7	     |      (1,0)	    |	   (2,2)              |
+|8	     |      (1,2)	    |	   (2,0)              | 
+---------------------------------------------------------------
+
+Since 8 committees can be formed, 8 is returned as the output.
+
+Example 2:
+----------
+input1: 2
+input2: 2
+
+Output:
+0
+
+
+Explanation:
+------------
+The number of students being interviewed is 2*2=4 and the number of members in the committee is 2.
+The students being interviewed possess mathematics and physics skills as under:(0,0),(0,1) and (1,1).
+ * (1,1) and (0,0) cannot be together as the difference of their   
+    Mathematics and physics skills is the Same.
+ * (0,0) cannot be in the same committee as (0,1) or (1,0)   
+    because they have the same Mathematics and physics skills respectively.
+ *  Similarly (1,1) cannot be in the same committee as (0,1) or (1,0).
+
+There is no way in which a committee which satisfies the given conditions can be formed.Therefore 0 is returned as the output.
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+Question: 12
+
+
+Problem Title: Bus Stop Origins
+
+Starting Point
+
+On the way to Tracy's coaching center and her home, there are exactly N bus stops. These are numbered from 1 (coaching center) to N (Tracy’s home).The number of buses that can be boarded from each bus stop is also given.
+
+Note:" A bus will only stop at a bus stop whose number is a multiple of the bus stop number from which the bus originates"
+
+Find the number of buses originating from each bus stop between her coaching center and her home.
+
+Input Specification
+-------------------
+input1: N Total number of bus stops. N<=10⁴
+input2: Array of N Elements, Bus[],Bus[i] = Number of buses that can be boarded from (i+1)th stop ,Bus(i)<=100
+
+Output Specification
+---------------------
+Return an array of N elements: Result[],Result[i] = Number of buses originating from the (i+1)-th stop.
+
+Example 1:
+----------
+input1 = 3
+input2 = [1, 2, 3]
+
+Output:
+[1, 1, 2]
+
+Explanation:
+-----------
+1 bus originates from the 1st bus stop and stops at all the bus stops.Hence, number of buses originating from 2nd bus stop = 2-1=1; bus from 2nd bus stop will not stop at 3rd bus stop. Hence number of buses originating from the 3rd bus stop =3-1( bus from 1st bus stop)=2.
+
+Example 2:
+---------
+input1 = 2
+input2 = [2, 7]
+
+
+Output:
+[2, 5]
+
+Explanation:
+------------
+2 buses originate from 1st bus stop at the second bus stop.Hence number of buses originating from 1st bus stop is 7-2=5.
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Question: 13
+
+Question 4: No Fight Please!
+
+Problem Statement:
+
+Mr. Cumberbatch is the Godfather of the town. People of different gangs have started fighting each other. Being the Godfather, he wants to keep the violence to a minimum. Since everyone respects him, the gangs stop fighting.
+
+Now, he has to move people from that place to somewhere else.He knows the total number of people i.e X.He has a vehicle in which Y people can sit at a time.
+
+He has made a hate mantrix which has N pairs (m,n),(1<=m,=x and 1<=n<=X) each pair means that perso m hates n, and they can travel together but will start fighting if they are left together at one place.Mr Cumberbatch has to find out the many minimum number of trips his vehicle will have to make to transport all the people without any fights.
+
+Input Specification:
+--------------------
+* input1: X → Total number of people
+* input2: N → Number of pairs in the hate matrix
+* input3: Y → Number of people that can sit in the vehicle at a time
+* input4: hate matrix  Consisting N pairs 
+
+Output Specification:
+----------------------
+* Your function should return the number of trips the vehicle has to make.
+
+Example 1:
+----------
+input1: 3  
+input2: 2  
+input3: 1  
+input4: {(1,2), (2,3)}
+
+Output:
+7
+
+Explanation:
+------------
+* Trip 1: person 2 to safe place
+* Trip 2: vehicle back with no person
+* Trip 3: person 1 to the safe place
+* Trip 4: person 2 back to the original place
+* Trip 5: person 3 to the safe place
+* Trip 6: vehicle back with no person
+* Trip 7: person 2 to the safe place
+
+
+
+Example 2:
+----------
+input1: 3  
+input2: 3  
+input3: 2  
+input4: {(1,2), (1,3), (2,3)}
+
+
+Output:
+3
+
+
+Explanation:
+------------
+The trips taken will be
+* Trip 1: person 1 and 2 to safe place
+* Trip 2: Back with person 2 
+* Trip 3: person 2 and 3 to safe place
+
+
+
+
+
