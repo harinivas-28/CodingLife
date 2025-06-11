@@ -84,7 +84,7 @@ public class Hierarchy {
                 return;
             }
             ht++;
-            i=j==i?j+1:j;
+            i=j;
         }
         System.out.println(ht-1);
     }

@@ -458,14 +458,14 @@ remaining shells and continues the breaking operation.
 The operations are visualized in the form of a binary tree with all same sized pieces on the same level. Here, the original shell
 is at the root node and the children are the 2 broken halves and so on.
 
-If the it shell is broken, it can be chosen from a certain number of levels depending upon the previous choices of breaking the first
+If the ith shell is broken, it can be chosen from a certain number of levels depending upon the previous choices of breaking the first
 to (i-1)th shell.
 
 Find and return the sum of all possible levels at which the ith shell can be broken.
 
 Input Specification:
 --------------------
-input1: An integer i denoting the number of shelis to be broken.
+input1: An integer i denoting the number of shells to be broken.
 
 Output Specification: 
 ---------------------
@@ -480,7 +480,7 @@ Output: 25
 
 Explanation:
 ------------
-Possible levels lie between 3 to 7.
+Possible levels lie between 3 and 7.
 
 Since on breaking the shells simultaneously from both the ses. 8 shells can be broken by the 3rd level and on breaking the shells 
 from any of the one side (either left hand or right-hand side), we have to traverse till level 7 to break 8 shells.
@@ -495,12 +495,12 @@ Output: 63
 
 Explanation:
 ------------
-Possible levels lie between 2 to 4.
+Possible levels lie between 2 and 4.
 
 Since on breaking the shells simultaneously from both the sides. 5 shells can be broken by the 2 level and on breaking the shells 
 from any of the one side (either left hand or right-hand side) we have to traverse till level 4 to break 5 shells
 
-Hence 2+3+4 9. therefore 9 is returned as the output
+Hence, 2+3+4 9. therefore 9 is returned as the output
 
 
 ------------------------------------------------------------------------------------------------------------------------------------
@@ -511,7 +511,7 @@ Circular Picnic
 As a fun tour, a teacher decided to take her students on a picnic to play a game. She made the children sit in a circle and then gave 
 everyone a card. On each card she had written a number, the number could be positive or negative.
 
-On every turn, the child whose turn it was spoke out the number written on his card and this went on till every child had completed his 
+On every turn, the child whose turn it was spoked out the number written on his card and this went on till every child had completed his
 turn.
 
 As a part of the group, you wanted to win the game every time therefore you need to find out the continuous maximum sum which you think 
@@ -558,7 +558,7 @@ Question: 11
 Tech Club Committee Selection Problem
 
 A group of students is planning to form a tech club and the club is open for recruitment.
-They are interviewing students and marking the skill levels in Mathematics and Physics of the `iᵗʰ` student as `(M, P)` respectively. 
+They are interviewing students and marking the skill levels in Mathematics and Physics of the `ith` student as `(M, P)` respectively.
 They will be segregating the selected students into committees, and for better efficiency they have a few conditions:
 
 1. All members of a committee should have different skill levels in Mathematics
