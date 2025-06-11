@@ -36,7 +36,7 @@ If the number is multiple of both 3 and 5 then consider only once.
 
 1. Write a program to sort an array of input numbers in ascending order and print.
    You have to use Bubble sort algorithm.
-  (Hint: Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping the adjacentelements if they are in wrong order)
+  (Hint: Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements if they are in wrong order)
 
 2. Write a program to find the age of a person given his date of birth in dd-mm-yvyy
    format. (Eg: dob= 03-03-1976, current-date = 22-10-2021, => age = 45)

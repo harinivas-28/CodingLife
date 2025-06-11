@@ -153,7 +153,7 @@ and the nodes between Levels 2 and 3 are 2, 3, 4, 5, 6, 7.
 
 Pizza Delivery Boy
 
-A pizza delivery boy got X orders to be delivered on his first day at work. The position of X locations is given in (a, b) co‑ordinates, and the boy’s speed is given in units per minute.
+A pizza delivery boy got X orders to be delivered on his first day at work. The position of X locations is given in (a, b) co‑ordinates, and the boy’s speed is given in units per minute.
 
 Find the maximum of the total traveling time it would take from one place to another.
 
@@ -166,7 +166,7 @@ Input Specification:
 --------------------
  input1: Speed of Dan
  input2: Value of X
- input3: A 2‑D array consisting of (x, y) co‑ordinates of X locations
+ input3: A 2‑D array consisting of (x, y) co‑ordinates of X locations
 
 Output Specification:
 ---------------------
@@ -214,26 +214,26 @@ The maximum distance is between points (-2,2) and (2,2), which is 4. Dan’s spe
 
 Hierarchy
 
-You are given a string(S) of digits. All the digits are 0s or 1s. Each 0 represents a dead node and each 1 represents an alive node. Assuming that the 0ᵗʰ node in the string is the oldest, a family tree is created in the following manner:
+You are given a string(S) of digits. All the digits are 0s or 1s. Each 0 represents a dead node and each 1 represents an alive node. Assuming that the 0ᵗʰ node in the string is the oldest, a family tree is created in the following manner:
 
  -> 0ᵗʰ node is the root
- ->Every alive node must have 2 children
+ ->Every alive node must have 2 children
  -> Dead nodes cannot have children
- ->The iᵗʰ node in the string is elder than (i+1)ᵗʰ node, and any node is made the child of the eldest node alive with 0 or 1 children.
+ ->The iᵗʰ node in the string is elder than (i+1)ᵗʰ node, and any node is made the child of the eldest node alive with 0 or 1 children.
  ->In the family tree, the elder child of a node is on the left and younger child on the right
  ->If no node is alive at any layer, then the construction is stopped and this tree is accepted as the final family tree.
 
-Your task is to find the height of the family tree for a given string S.
+Your task is to find the height of the family tree for a given string S.
 
 
 
 Input Specification:
 --------------------
- input1: String of 0s and 1s
+ input1: String of 0s and 1s
 
 Output Specification:
 ---------------------
-Return H, Height of the family tree.
+Return H, Height of the family tree.
 
 
 
@@ -278,14 +278,14 @@ Question 6 – Construction Work
 
 Construction Work
 
-Luke likes to construct and play with arrays. His dad gave him an array 'M' of length 'N' and assigned to him the following tasks to be done in order:
+Luke likes to construct and play with arrays. His dad gave him an array 'M' of length 'N' and assigned to him the following tasks to be done in order:
 
-1. Create continuous groups of size i with the elements of the array M.
+1. Create continuous groups of size i with the elements of the array M.
 2. Once the groups are created, find the minimum values from each group and select the maximum value among all these minimum values.
-3. Place the highest value as iᵗʰ element in the new array P.
-4. Repeat the process until the group size becomes equal to N.
+3. Place the highest value as iᵗʰ element in the new array P.
+4. Repeat the process until the group size becomes equal to N.
 
-You must help Luke to find the array P and return it as the output.
+You must help Luke to find the array P and return it as the output.
 
 Note: Assume 1-based indexing in array M and P.
 
@@ -293,12 +293,12 @@ Note: Assume 1-based indexing in array M and P.
 
 Input Specification:
 --------------------
- input1: An integer value N, representing the length of the array M
- input2: An integer array M, representing the array Luke’s dad gave him
+ input1: An integer value N, representing the length of the array M
+ input2: An integer array M, representing the array Luke’s dad gave him
 
 Output Specification:
 ---------------------
-Return the array P as the output.
+Return the array P as the output.
 
 Example 1:
 ----------
@@ -433,7 +433,7 @@ Output: 0
 
 Explanation:
 -------------
-In examplet llohe ereth is a rotated string, mence the original string was hello there which is not correct. Hence answer is 0.
+In example llohe ereth is a rotated string, mence the original string was hello there which is not correct. Hence answer is 0.
 
 Example 2:
 ----------
