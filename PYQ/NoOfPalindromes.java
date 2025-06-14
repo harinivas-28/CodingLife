@@ -1,5 +1,6 @@
 package PYQ;
 import java.util.*;
+// AMAZON Q
 // OPTIMIZED IS BELOW
 public class NoOfPalindromes {
     private static int expand(String s, int l, int r){
