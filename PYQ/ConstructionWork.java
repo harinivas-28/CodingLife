@@ -73,9 +73,9 @@ public class ConstructionWork {
     private static int[] solve(int[] nums){
         int n = nums.length;
         int[] res = new int[n];
-        for(int i=1;i<=n;i++){
+        for(int i=1;i<=n;i++){ // window size from 1 to n
             Deque<Integer> dq = new LinkedList<>();
-            int maxMin = Integer.MIN_VALUE;
+            int maxMin = Integer.MIN_VALUE; // maximum value from the minimum's
             for(int j=0;j<n;j++){
                 while(!dq.isEmpty() && dq.peekFirst()<j-i+1){
                     dq.pollFirst();

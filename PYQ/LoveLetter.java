@@ -54,7 +54,11 @@ public class LoveLetter {
         int n = sc.nextInt();
         int res = 0;
         for (String string : s) {
-            String rot = rotate(string, n);
+            if(n%string.length()==0){
+                res++;
+                continue;
+            }
+            String rot = rotate(string, n%string.length());
             if (string.equals(rot)) {
                 res++;
             }
