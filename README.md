@@ -1,6 +1,8 @@
 # 🎓 Finishing School Repository
 
-Welcome to our comprehensive learning repository! This collection is thoughtfully organized into three primary domains:
+(Just Try out the Questions, Star this repo if it worth)
+
+Welcome to my comprehensive learning repository! This collection is thoughtfully organized into three primary domains:
 
 1. 💻 **Coding Excellence**  
     A rich collection of Data Structures & Algorithms problems, carefully curated from fundamental concepts to advanced challenges:
