@@ -1,0 +1,30 @@
+pipeline {
+    agent any
+
+    environment {
+        JOB_ZIP = 'CustomerLoggerJob.zip'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Unzip Talend Job') {
+            steps {
+                bat "powershell -Command \"Expand-Archive -Force %JOB_ZIP% job\""
+            }
+        }
+
+        stage('Run Talend Job') {
+            steps {
+                bat """
+                    cd job\\CustomerLoggerJob
+                    call CustomerLoggerJob_run.bat --context=Default
+                """
+            }
+        }
+    }
+}
