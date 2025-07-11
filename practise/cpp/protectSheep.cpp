@@ -69,30 +69,30 @@ using namespace std;
 void solve(){
     int m, n;
     cin >> m >> n;
-    vector<string> res(m);
-    while(m--){
-        string s;
-        cin >> s;
-        string t(n, '.');
-        for(int i=0;i<n;i++){
-            if(s[i]=='W'){
-                if((i>0 && s[i-1]=='S') || (i<n-1 && s[i+1]=='S')){
-                    cout << "No" << endl;
-                    return;
-                } else {
-                    if(i>0) t[i-1]='D';
-                    if(i<n-1) t[i+1]='D';
-                    t[i] = s[i];
-                }
+    vector<string> g(m);
+    for(int i=0;i<m;i++){
+        cin >> g[i];
+    }
+    for(int i=0;i<m;i++){
+        for(int j=0;j<n;j++){
+            if((i>0 && g[i][j]=='W' && g[i-1][j]=='S') || 
+            (i<m-1 && g[i][j]=='W' && g[i+1][j]=='S') || 
+            (j>0 && g[i][j]=='W' && g[i][j-1]=='S') ||
+            (j<n-1 && g[i][j]=='W' && g[i][j+1]=='S')
+        ){
+                cout << "No" << endl;
+                return;
             }
         }
-        res.push_back(t);
     }
     cout << "Yes" << "\n";
-    for(string x: res){
-        cout << x << "\n";
+    for(int i=0;i<m;i++){
+        for(int j=0;j<n;j++){
+            if(g[i][j]=='.') g[i][j]='D';
+        }
+        cout << g[i] << "\n";
     }
-    cout << endl;
+    cout << endl;    
 }
 
 int main(){
