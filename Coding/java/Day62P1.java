@@ -3,7 +3,7 @@ import java.util.*;
 /*
 Luke likes to construct and play with arrays. His dad gave him an array M of
 length N and assigned him the following tasks to be done in order:
- - reate continuous groups of size i from the array M (where i goes from 1 to N).
+ - create continuous groups of size i from the array M (where i goes from 1 to N).
  - For each group of size i, find the minimum value.
  - Among all the minimums from that step, select the maximum.
  - Add this selected value as the i-th element of a new array P.
