@@ -6,3 +6,4 @@ node_modules
 .cph
 .practise/compet/.cph/
 Projects/iphone_price_scraper/venv
+talend/airflow-docker
