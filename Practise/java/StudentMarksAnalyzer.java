@@ -104,6 +104,7 @@ public class StudentMarksAnalyzer {
         Arrays.stream(students).forEach(System.out::println);
         Student topper = getTopper(students);
         System.out.println("Topper: "+topper+" with Average: "+topper.calculateAverage());
+        sc.close();
     }
     static Student getTopper(Student[] students){
         Student res = null;
