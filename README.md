@@ -2,6 +2,79 @@
 
 (Just Try out the Questions, Star this repo if it worth)
 
+Directory Tree Info:
+
+C:.
+├───.idea
+├───.vscode
+├───CompanyQuestions
+├───Database
+├───FullStackDevelopment
+│   ├───node_modules
+│   ├───practise
+│   └───react-app-basics
+│       └───src
+├───lib
+├───Practise
+│   ├───competitiveSetup
+│   │   ├───.cph
+│   │   ├───.vscode
+│   │   ├───src
+│   │   │   ├───main
+│   │   │   │   ├───java
+│   │   │   │   │   └───com
+│   │   │   │   │       └───practise
+│   │   │   │   └───resources
+│   │   │   └───test
+│   │   │       └───java
+│   │   └───target
+│   │       ├───classes
+│   │       │   └───com
+│   │       │       └───practise
+│   │       └───test-classes
+│   ├───cpp
+│   │   └───.cph
+│   ├───DB
+│   └───java
+│       └───.cph
+├───Problems
+│   ├───cpp
+│   ├───java
+│   │   └───out
+│   └───python
+├───Quiz_s
+└───talend
+    └───airflow-docker
+        ├───dags
+        │   ├───venv
+        │   └───__pycache__
+        ├───logs
+        ├───plugins
+        ├───talend-jobs
+        │   └───AirflowUsingTalend_0.1
+        │       ├───AirflowUsingTalend
+        │       │   ├───items
+        │       │   │   └───talendpractice
+        │       │   │       ├───.settings
+        │       │   │       └───process
+        │       │   ├───src
+        │       │   │   └───main
+        │       │   │       ├───java
+        │       │   │       │   └───talendpractice
+        │       │   │       │       └───airflowusingtalend_0_1
+        │       │   │       └───resources
+        │       │   │           ├───talendpractice
+        │       │   │           │   └───airflowusingtalend_0_1
+        │       │   │           │       └───contexts
+        │       │   │           └───xmlMappings
+        │       │   ├───talendpractice
+        │       │   │   └───airflowusingtalend_0_1
+        │       │   │       └───contexts
+        │       │   └───xmlMappings
+        │       ├───lib
+        │       └───META-INF
+        └───talend_jobs
+
 Welcome to my comprehensive learning repository! This collection is thoughtfully organized into three primary domains:
 
 1. 💻 **Problems Excellence**  
