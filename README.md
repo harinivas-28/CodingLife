@@ -4,14 +4,14 @@
 
 Welcome to my comprehensive learning repository! This collection is thoughtfully organized into three primary domains:
 
-1. 💻 **Coding Excellence**  
+1. 💻 **Problems Excellence**  
     A rich collection of Data Structures & Algorithms problems, carefully curated from fundamental concepts to advanced challenges:
     - **C++ Corner** 🔧: Implementation in C++
     - **Java Hub** ☕: Implementation in Java
     - Practice problems with detailed solutions
     - Step-by-step explanations
 
-2. 🌐 **Full Stack Development (FSD)**  
+2. 🌐 **Full Stack Development (FullStackDevelopment)**  
     Your gateway to modern web development, featuring:
     - 📝 JavaScript mastery from basics to advanced concepts
     - ⚛️ React application development
