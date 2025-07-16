@@ -33,7 +33,7 @@ Welcome to my comprehensive learning repository! This collection is thoughtfully
 
 ## How to Contribute
 
-- **Clone the repository**: `git clone https://github.com/harinivas-28/Fs.git`
+- **Clone the repository**: `git clone https://github.com/harinivas-28/CodingLife.git`
 - **Fork the repository**: Click the "Fork" button at the top right of this page
 
 Feel free to explore each section! If you find this repository helpful, please star ⭐ it. Thank you for visiting and happy learning!
