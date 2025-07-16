@@ -67,35 +67,6 @@ If you find this repository helpful, please consider giving it a star!
 ## 📝 License
 This project is open source and available under the [MIT License](LICENSE).
 
-Welcome to my comprehensive learning repository! This collection is thoughtfully organized into three primary domains:
-
-1. 💻 **Problems Excellence**  
-    A rich collection of Data Structures & Algorithms problems, carefully curated from fundamental concepts to advanced challenges:
-    - **C++ Corner** 🔧: Implementation in C++
-    - **Java Hub** ☕: Implementation in Java
-    - Practice problems with detailed solutions
-    - Step-by-step explanations
-
-2. 🌐 **Full Stack Development (FullStackDevelopment)**  
-    Your gateway to modern web development, featuring:
-    - 📝 JavaScript mastery from basics to advanced concepts
-    - ⚛️ React application development
-    - 📚 MERN Stack projects including:
-      - MongoDB integration
-      - Express.js backend
-      - React frontend
-      - Node.js server-side development
-    - 🔄 RESTful API development
-    - 🎨 UI/UX best practices
-
-3. 🤖 **Generative AI & Machine Learning**  
-    Dive into the future of technology with:
-    - 🎯 Generative AI applications and use cases
-    - 🧮 Machine Learning algorithms and implementations
-    - 🧠 Deep Learning neural networks
-    - 📊 Data analysis and visualization
-    - 🔬 Practical projects and experiments
-
 ## How to Contribute
 
 - **Clone the repository**: `git clone https://github.com/harinivas-28/CodingLife.git`
