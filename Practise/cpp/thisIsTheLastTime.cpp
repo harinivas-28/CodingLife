@@ -100,9 +100,9 @@ public:
 	        return l<other.l;
 	    }
 	    if(r!=other.r){
-	        return r<other.r;
+	        return r>other.r;
 	    }
-	    return coins<other.coins;
+	    return coins>other.coins;
 	}
 	void displayDetails() const {
         std::cout << "Casino [l=" << l << ", r=" << r << ", coins=" << coins << "]" << std::endl;
@@ -125,23 +125,20 @@ void solve() {
 		cin >> l >> r >> c;
 		v.emplace_back(Casino(l,r,c));
 	}
-// 	sort(v.begin(), v.end(), [](const Casino &a, const Casino &b){
-// 	   if(a.l!=b.l){
-// 	       return a.l<b.l;
-// 	   } 
-// 	   if(a.r!=b.r){
-// 	       return a.r<b.r;
-// 	   }
-// 	   return a.coins<b.coins;
-// 	});
-    sort(v.begin(), v.end());
-    printCasinos("Sorted using Comparator", v);
-    int i =0;
-    while(i<n && k>v[i].coins) i++;
-    while(i<n && k>=v[i].l && k<=v[i].r){
-        k = v[i].coins;
-        i++;
-    }
+	sort(v.begin(), v.end(), [](const Casino &a, const Casino &b){
+	   if(a.l!=b.l){
+	       return a.l<b.l;
+	   } 
+	   if(a.r!=b.r){
+	       return a.r>b.r;
+	   }
+	   return a.coins>b.coins;
+	});
+    // sort(v.begin(), v.end());
+    // printCasinos("Sorted using Comparator", v);
+    for(int i(0);i<n;i++){
+		if(v[i].l<=k&&v[i].r>=k)k=max(k,v[i].coins);
+	}
     cout<<k<<endl;
 }
 
