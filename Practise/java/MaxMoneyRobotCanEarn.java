@@ -130,7 +130,26 @@ public class MaxMoneyRobotCanEarn {
     }
     private static int maximumAmount(int[][] coins){
         int m = coins.length, n = coins[0].length;
-        int[][][] dp = new int[m][n][3];
-
+        int[][] dp = new int[n+1][3]; // c = 0,1,2
+        for(int i=0;i<=n;i++) Arrays.fill(dp[i], Integer.MIN_VALUE/2);
+        for(int i=0;i<3;i++) dp[1][i] = 0;
+        for(int[] row: coins){
+            for(int j=1;j<=n;j++){
+                int x = row[j-1];
+                // max (left, above)
+                // 2 skips remaining
+                dp[j][2] = Math.max(
+                        Math.max(dp[j-1][2] + x, dp[j][2]+x), // choose
+                        Math.max(dp[j-1][1], dp[j][1]) // skip
+                );
+                // 1 skip remaining
+                dp[j][1] = Math.max(
+                        Math.max(dp[j-1][1]+x, dp[j][1]+x), // choose
+                        Math.max(dp[j-1][0], dp[j][0]) // skip
+                );
+                dp[j][0] = Math.max(dp[j-1][0], dp[j][0]) + x; // must have to choose cuz c=0;
+            }
+        }
+        return dp[n][2];
     }
 }
