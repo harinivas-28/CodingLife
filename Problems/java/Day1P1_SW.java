@@ -70,9 +70,29 @@
 //         System.out.println(res);
 //     }
 // }
-package Problems.java;
-import java.util.*;
 
+/*
+Minimum Positive Product Subarray
+Problem Statement
+
+You are given an integer array nums of size n, and two integers l and r.
+
+A subarray is defined as a contiguous sequence of elements in the array.
+
+Your task is to find the minimum positive product of any subarray whose length lies between l and r (inclusive).
+
+Return the minimum positive product.
+If no such subarray exists, return -1.
+
+Input
+An integer array nums of length n
+Two integers l and r
+
+Output
+Return an integer representing the minimum positive product
+Return -1 if no valid subarray exists
+*/
+/*
 public class Day1P1_SW {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
@@ -99,5 +119,30 @@ public class Day1P1_SW {
         }
         System.out.println(min==Integer.MAX_VALUE ? -1 : min);
         sc.close();
+    }
+}
+*/
+package Problems.java;
+import java.util.*;
+
+public class Day1P1_SW {
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt(), l = sc.nextInt(), r = sc.nextInt();
+        int[] nums = new int[n];
+        for(int i=0;i<n;i++) nums[i] = sc.nextInt();
+
+        long res = Integer.MAX_VALUE;
+        for(int i=0;i<n;i++){
+            long prod = 1;
+            for(int j=i;j<n;j++){
+                prod *= nums[j];
+                int len = j-i+1;
+                if(len>=l && len<=r && prod>0){
+                    res = Math.min(res, prod);
+                }
+            }
+        }
+        System.out.println(res);
     }
 }
