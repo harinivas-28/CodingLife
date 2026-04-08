@@ -57,7 +57,7 @@ C:.
 1. Fork the repository
 2. Clone your fork:
    ```bash
-   git clone https://github.com/your-username/CodingLife.git
+   [git clone https://github.com/your-username/CodingLife.git](https://github.com/harinivas-28/CodingLife.git)
    ```
 3. Create a new branch for your feature
 4. Submit a pull request
