@@ -1,11 +1,21 @@
 const express = require('express');
 const cors = require('cors');
+const rateLimit = require('express-rate-limit');
 const db = require('./db');
 const app = express();
 const port = 3000;
 
 app.use(cors());
 app.use(express.json());
+
+const customerLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // limit each IP to 100 requests per windowMs
+    standardHeaders: true,
+    legacyHeaders: false,
+});
+
+app.use('/customers', customerLimiter);
 
 // getting all customers
 app.get('/customers', (req, res)=>{
